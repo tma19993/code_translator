@@ -14,8 +14,9 @@ import { TranslationComponent } from './components/translation/translation.compo
 import { MenuComponent } from './components/menu/menu.component';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DownloadComponent } from './components/download/download.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EncodingMessagesComponent } from './components/encoding-messages/encoding-messages.component';
+import { CodingService } from './services';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { EncodingMessagesComponent } from './components/encoding-messages/encodi
   ],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     ButtonModule,
     DropdownModule,
     InputTextareaModule,
@@ -43,7 +45,7 @@ import { EncodingMessagesComponent } from './components/encoding-messages/encodi
       }
   })
   ],
-  providers: [],
+  providers: [CodingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

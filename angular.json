@@ -31,7 +31,6 @@
             ],
             "styles": [
               "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/bootstrap/scss/bootstrap.scss",
               "src/styles.scss"
             ],
             "scripts": [

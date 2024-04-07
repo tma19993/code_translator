@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CodingService } from 'src/app/services';
 
 @Component({
   selector: 'app-menu',
@@ -10,7 +11,7 @@ export class MenuComponent {
   public stepByStepVisible: boolean = false;
   public pdfVisible: boolean = false;
 
-  constructor() {}
+  constructor(public codingService: CodingService) {}
 
   public openDialog(dialogName: string): void {
     this.learningVisible = false;

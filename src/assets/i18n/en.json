@@ -1,4 +1,5 @@
 {
+    "headerText": "Text/Binary Message Encoding",
     "changeLanguage": "Zmień na język polski",
     "menuButtons":{
         "learning": "learning",
@@ -18,7 +19,8 @@
         "stepByStep": "step by step"
     },
     "encodingMessagesSection":{
-        "dropdownPlaceholder":"select the type of encoding",
+        "dropdownPlaceholder":"select type of code",
+        "encodeTextareaPlaceholder":"enter the message to encode",
         "codeButton":"encode message"
     }
 }

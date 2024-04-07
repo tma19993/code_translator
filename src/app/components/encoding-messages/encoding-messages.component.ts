@@ -1,31 +1,63 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { dropdownCodeList } from 'src/app/constants';
+import { CodingService } from 'src/app/services';
+import { DropdownCodeListType } from 'src/app/types';
 
 @Component({
   selector: 'app-encoding-messages',
   templateUrl: './encoding-messages.component.html',
   styleUrls: ['./encoding-messages.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EncodingMessagesComponent implements OnInit {
-  public encodeMessage: string;
-  public codedMessage: string;
-  public selectedEncode: string;
-  public selectedCoded: string;
-  public dropdownCodeList: any[]|undefined = dropdownCodeList;
+  public form: FormGroup = new FormGroup({});
+  public canCopyEncodedMessage: boolean = false;
+  public dropdownCodeList: any[] | undefined = dropdownCodeList;
+  public dropdownEncodeList: any[] | undefined = [];
+  public submit: boolean = false;
 
-  constructor(){}
+  constructor(private formBuilder: FormBuilder,private codingService: CodingService) {}
+
   public ngOnInit(): void {
-    // throw new Error('Method not implemented.');
+    this.form = this.formBuilder.group({
+      selectedEncode: [null, Validators.required],
+      encodeMessage: ['', Validators.required],
+      selectedCoded: [{ value: null, disabled: true }, Validators.required],
+      codedMessage: [{ value: '', disabled: true }],
+    });
   }
 
-  public codeMessage(): void {
-    this.codedMessage = "dwwwww";
+  public onSubmit(): void {
+    this.submit = true;
+   if(this.form.valid){
+    this.codingService.disablePDF = false;
+    if(this.form.value.selectedEncode !==''){
+      this.codingService.disableLearning = false;
     }
+    if (this.form.value.encodeMessage !== ''){
+      this.form.get('codedMessage')?.enable();
+      this.codingService.disableStepByStep = false;
+     
+    }
+   }
+      
+    // tutaj odwołujemy się do odpowiednich danych wybranych do kodwania 
+  }
 
   public switchMessages(): void {
-    this.encodeMessage = this.codedMessage;
-    this.codedMessage = "";
+    this.form.controls['encodeMessage'].setValue(
+      this.form.controls['codedMessage'].value
+    );
+    this.form.controls['codedMessage'].setValue('');
+  }
+
+  public changeCodedList( list: DropdownCodeListType): void{
+    if(this.form.value.selectedEncode !==''){
+      this.form.get('selectedCoded')?.enable();
+      this.dropdownEncodeList = list.encodeList;
     }
+      
+  }
 
 }

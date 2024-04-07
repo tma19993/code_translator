@@ -1,4 +1,5 @@
-{
+{   
+    "headerText": "Kodowanie wiadomości Tekstowej/Binarnej",
     "changeLanguage": "change to english",
     "menuButtons":{
         "learning": "nauka",
@@ -19,6 +20,7 @@
     },
     "encodingMessagesSection":{
         "dropdownPlaceholder":"wybierz rodzaj kodowania",
+        "encodeTextareaPlaceholder":"wprowadz wiadomość do zakodowania",
         "codeButton":"zakoduj wiadomość"
     }
 }

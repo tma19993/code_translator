@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import * as pdfMake from "pdfMake/build/pdfMake";
+import * as pdfFonts from "pdfMake/build/vfs_fonts";
 
+(pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-download',
   templateUrl: './download.component.html',
@@ -7,37 +11,42 @@ import { Component } from '@angular/core';
 })
 export class DownloadComponent {
   public selectedValues: string[] = [];
-
-  constructor() {}
+  constructor(private translate: TranslateService) {}
 
   public submit(): void {
-    this.selectedValues.forEach(value=>{
-      switch (value){
+    this.selectedValues.forEach((value) => {
+      switch (value) {
         case 'result':
-        this.downloadResult();
+          this.downloadResult();
           break;
         case 'stepByStep':
-       this.downloadStepByStep();
+          this.downloadStepByStep();
           break;
         case 'learning':
           this.downloadLearning();
           break;
-          default: 
+        default:
       }
-    });   
-   }
+    });
+  }
 
   private downloadResult(): void{
-    console.log("result");
+    this.generatePDF("result", this.translate.instant("downloadSection.result"));
   }
-  
+
   private downloadStepByStep(): void{
-    console.log("stepByStep");
+    this.generatePDF("stepByStep", this.translate.instant("downloadSection.stepByStep"));
   }
 
   private downloadLearning(): void{
-    console.log("learning");
+   this.generatePDF("learning", this.translate.instant("downloadSection.learning"));
   }
 
+  private generatePDF(content: any, fileName: string): void {
+    const docDefinition = {
+      content: [content],
+    };
+    pdfMake.createPdf(docDefinition).download(fileName);
+  }
 }
 

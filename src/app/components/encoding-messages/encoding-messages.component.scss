@@ -14,4 +14,10 @@
      .submit ::ng-deep{
         font-size: 24px;
      }
+
+     p-dropdown.ng-dirty.ng-invalid  ::ng-deep .p-dropdown,
+      textarea.ng-dirty.ng-invalid  {
+        border-width: 2px;
+        }
+     
 }
