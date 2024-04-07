@@ -9,7 +9,6 @@ import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DialogModule } from 'primeng/dialog';
-import { LanguageSwitcherComponent } from './components/language-switcher/language-switcher.component';
 import { TranslationComponent } from './components/translation/translation.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -20,7 +19,6 @@ import { CodingService } from './services';
 @NgModule({
   declarations: [
     AppComponent,
-    LanguageSwitcherComponent,
     TranslationComponent,
     MenuComponent,
     DownloadComponent,

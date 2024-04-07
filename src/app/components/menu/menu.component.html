@@ -1,4 +1,4 @@
-<section class="menu">
+<section class="menu d-flex justify-content-center flex-column flex-md-row">
     <p-button size="large" [disabled]="codingService.disableLearning" [label]="'menuButtons.learning' | translate | uppercase" (onClick)="openDialog('learning')"></p-button>
     <p-button size="large" [disabled]="codingService.disableStepByStep" [label]="'menuButtons.stepByStep' | translate | uppercase" (onClick)="openDialog('stepByStep')"></p-button>
     <p-button size="large" [disabled]="codingService.disablePDF" [label]="'menuButtons.pdf' | translate | uppercase" (onClick)="openDialog('pdf')"></p-button>
