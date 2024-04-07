@@ -1,0 +1,25 @@
+<div class="d-block w-100">
+    <div class="d-flex flex-column gap-5 my-4 ms-4">
+        <p-checkbox  
+        [(ngModel)]="selectedValues" 
+        [label]="'downloadSection.result'| translate"
+        value="result"
+        inputId="re"
+        name="result"></p-checkbox>
+        <p-checkbox  
+        [(ngModel)]="selectedValues" 
+        [label]="'downloadSection.stepByStep'| translate"
+        value="stepByStep"
+        inputId="st"
+        name="stepByStep"></p-checkbox>
+        <p-checkbox  
+        [(ngModel)]="selectedValues" 
+        [label]="'downloadSection.learning'| translate"
+        value="learning"
+        inputId="le"
+        name="learning"></p-checkbox>
+    </div>
+  <div class="w-100 d-flex justify-content-center">
+    <p-button class="text-center" [label]="'menuButtons.download' | translate | uppercase" (onClick)="submit()"></p-button>
+  </div>
+   </div>

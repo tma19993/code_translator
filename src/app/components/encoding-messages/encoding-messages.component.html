@@ -1,0 +1,19 @@
+<section class="d-flex align-center justify-content-center">
+    <div class="d-flex flex-column me-4">
+        <p-dropdown [autoDisplayFirst]="false" class="my-3" [options]="dropdownCodeList" optionLabel="name" [(ngModel)]="selectedEncode"  [showClear]="true" [placeholder]="'encodingMessagesSection.dropdownPlaceholder' | translate | titlecase "></p-dropdown>
+        <textarea rows="10" cols="80" pInputTextarea [autoResize]="true"  [(ngModel)]="encodeMessage" [placeholder]="'encodingMessagesSection.dropdownPlaceholder' | translate | titlecase"></textarea>
+      </div>
+      <p-button (onClick)="switchMessages()" class="change-button mt-5" icon="pi pi-arrow-right-arrow-left" size="large" ></p-button>
+      <div class="d-flex flex-column ms-4">
+        <p-dropdown [autoDisplayFirst]="false" class="my-3" [options]="dropdownCodeList" optionLabel="name" [(ngModel)]="selectedCoded" [showClear]="true" [placeholder]="'encodingMessagesSection.dropdownPlaceholder' | translate | titlecase"></p-dropdown>
+        <textarea [readonly]="true" rows="10" cols="80" pInputTextarea [autoResize]="true" [(ngModel)]="codedMessage" [placeholder]="'encodingMessagesSection.dropdownPlaceholder' | translate | titlecase"></textarea>
+      </div>
+</section>
+<div class="submit mt-5">
+    <p-button 
+    (onClick)="codeMessage()"
+    [rounded]="true" 
+    [label]="'encodingMessagesSection.codeButton' | translate | titlecase" 
+    size="large" 
+    severity="success"></p-button>
+</div>

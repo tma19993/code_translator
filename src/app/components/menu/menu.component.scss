@@ -1,0 +1,13 @@
+.menu {
+    margin: 0 auto;
+     width: 60%;
+     background-color: #fff;
+     border-radius: 20px;
+     padding: 20px 0;
+     display: flex;
+     justify-content: center;
+     gap: 40px;
+     p-button ::ng-deep{
+        font-size: 24px;
+     }
+}

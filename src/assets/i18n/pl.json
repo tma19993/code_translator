@@ -1,0 +1,24 @@
+{
+    "changeLanguage": "change to english",
+    "menuButtons":{
+        "learning": "nauka",
+        "stepByStep": "krok po korku",
+        "pdf":"pdf",
+        "download":"pobierz"
+    },
+    "learningSection":{
+
+    },
+    "stepByStepSection":{
+
+    },
+    "downloadSection":{
+        "result":"wynik",
+        "learning": "nauka",
+        "stepByStep": "krok po korku"
+    },
+    "encodingMessagesSection":{
+        "dropdownPlaceholder":"wybierz rodzaj kodowania",
+        "codeButton":"zakoduj wiadomość"
+    }
+}

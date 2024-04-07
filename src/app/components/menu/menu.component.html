@@ -1,0 +1,32 @@
+<section class="menu">
+    <p-button size="large" [label]="'menuButtons.learning' | translate | uppercase" (onClick)="openDialog('learning')"></p-button>
+    <p-button size="large" [label]="'menuButtons.stepByStep' | translate | uppercase" (onClick)="openDialog('stepByStep')"></p-button>
+    <p-button size="large" [label]="'menuButtons.pdf' | translate | uppercase" (onClick)="openDialog('pdf')"></p-button>
+</section>
+
+<p-dialog 
+[style]="{ width: '50vw' }"
+[header]="'menuButtons.learning' | translate" 
+[maximizable]="true"
+[(visible)]="learningVisible" 
+(onHide)="learningVisible = false">
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, deserunt necessitatibus temporibus optio cumque, incidunt consequatur totam quisquam omnis aspernatur nam quaerat, modi tempore reiciendis minima autem debitis dicta dolores.</p>
+</p-dialog>
+<p-dialog 
+[style]="{ width: '50vw' }"
+[header]="'menuButtons.stepByStep' | translate" 
+[maximizable]="true"
+[(visible)]="stepByStepVisible" 
+(onHide)="stepByStepVisible = false">
+   <div>
+
+   </div>
+</p-dialog>
+<p-dialog 
+[style]="{ width: '30vw' }"
+[header]="'menuButtons.pdf' | translate | uppercase" 
+[maximizable]="true"
+[(visible)]="pdfVisible" 
+(onHide)="pdfVisible = false">
+   <app-download></app-download>
+</p-dialog>

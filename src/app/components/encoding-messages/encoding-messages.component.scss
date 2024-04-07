@@ -1,0 +1,17 @@
+:host{
+    .change-button {
+        ::ng-deep{
+            .p-button{
+                background: transparent;
+                border-radius: 50%;
+                &:enabled:hover{
+                    border-color: #fff;
+                }
+            }
+        }
+        align-self: center;
+    }
+     .submit ::ng-deep{
+        font-size: 24px;
+     }
+}
