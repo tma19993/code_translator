@@ -17,7 +17,7 @@
         [autoResize]="true"  
         [placeholder]="'encodingMessagesSection.encodeTextareaPlaceholder' | translate | titlecase"></textarea>
     </div>
-
+    <p-button (onClick)="switchMessages()" [disabled]="!form.get('codedMessage')?.valid" class="change-button mt-5" icon="pi pi-arrow-right-arrow-left" size="large" ></p-button>
     <div class="d-flex flex-column ms-4">
       <p-dropdown 
         [class]="form.get('selectedCoded')?.invalid  && submit? 'ng-dirty ng-invalid my-3' : 'my-3'"
@@ -38,6 +38,7 @@
   <div class="submit mt-5">
     <p-button 
     type="submit" 
+    [disabled]="validationBeforeSubmit()"
     [label]="'encodingMessagesSection.codeButton' | translate | titlecase" 
     size="large" 
     severity="success"></p-button>
