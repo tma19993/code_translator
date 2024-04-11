@@ -1,3 +1,36 @@
 <section #learningElement>
- cos
+    {{codingService.combinationCoding}}
+ <div *ngIf="codingService.combinationCoding == { fromEncoding: 'ascii',toEncoding: 'text'} || codingService.combinationCoding == { fromEncoding: 'text',toEncoding: 'ascii'}" class="mx-5">
+    <p>Kodowanie jak i dekodowanie wiadomości w ASCII polega na wyszukiwaniu danych w tabeli ASCII. Na przykład słowo "Rower".</p>
+    <div class="my-5" style="overflow-x: auto;">
+        <table class="d-flex" style="max-height: 300px;">
+          <tr>
+            <td style="min-width: 50px;">Decimal:</td>
+            <td style="min-width: 50px;">ASCII</td>
+          </tr>
+          <tr  *ngFor="let char of asciiTable" style="min-width: 60px;">
+            <td>{{char.decimal}}: </td>
+            <td>{{char.ascii}}</td>
+          </tr>
+        </table>
+      </div>
+      <p>Przy kodowaniu wiadomości należy szukamy liter w tabeli będą to R: 82, o: 111, w: 119, e: 101, r: 114. Postać ASCII to 82,111,119,101,114.</p>
+     <p> Przy dekodowaniu wiadomości mamy liczby 82,111,119,101,114. Szukamy w tabeli ASCII po stronie dziesiętnej R: 82, o: 111, w: 119, e: 101, r: 114. Wychodzi słowo "Rower"</p>
+ </div>
+ <div *ngIf="codingService.combinationCoding == { fromEncoding: 'ascii',toEncoding: 'utf-8'}" class="mx-5">
+    <p>Kodowanie Wiadomości z ASCII na UTF-8 jest </p>
+    <div class="my-5" style="overflow-x: auto;">
+        <table class="d-flex" style="max-height: 300px;">
+          <tr>
+            <td style="min-width: 50px;">Decimal:</td>
+            <td style="min-width: 50px;">ASCII</td>
+          </tr>
+          <tr  *ngFor="let char of asciiTable" style="min-width: 60px;">
+            <td>{{char.decimal}}: </td>
+            <td>{{char.ascii}}</td>
+          </tr>
+        </table>
+      </div>
+ </div>
+
 </section> 

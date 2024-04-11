@@ -11,6 +11,5 @@ export class StepByStepComponent {
   constructor(private codingService: CodingService, private downloadFilesService: DownloadFilesService){}
   public ngAfterViewInit(): void {
     this.downloadFilesService.stepByStepElement = this.stepByStepElement;
-    console.log(this.downloadFilesService.learningElement );
   }
 }
