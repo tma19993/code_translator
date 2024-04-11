@@ -48,9 +48,8 @@ export class EncodingMessagesComponent implements OnInit {
         conbination
       )
     );
-    console.log(this.resultElement.nativeElement);
+    this.codingService.combinationCoding = conbination;
     this.downloadFilesService.resultElement = this.resultElement;
-    console.log( this.downloadFilesService.resultElement.nativeElement);
   }
 
   public switchMessages(): void {
@@ -64,7 +63,7 @@ export class EncodingMessagesComponent implements OnInit {
   public changeCodedList(list: DropdownCodeListType): void {
     if (this.form.value.selectedEncode !== "") {
       this.form.get("selectedCoded")?.enable();
-      this.dropdownEncodeList = list.encodeList;
+      this.dropdownEncodeList = list?.encodeList;
     }
   }
 

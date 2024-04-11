@@ -1,6 +1,7 @@
 import { ElementRef, Injectable } from '@angular/core';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
+import { LearingComponent } from '../components';
 
 type generateAction = 'result' | 'stepByStep' | 'learning';
 @Injectable({

@@ -10,7 +10,7 @@
 [maximizable]="true"
 [(visible)]="learningVisible" 
 (onHide)="learningVisible = false">
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, deserunt necessitatibus temporibus optio cumque, incidunt consequatur totam quisquam omnis aspernatur nam quaerat, modi tempore reiciendis minima autem debitis dicta dolores.</p>
+<app-learing></app-learing>
 </p-dialog>
 <p-dialog 
 [style]="{ width: '50vw' }"
@@ -18,9 +18,7 @@
 [maximizable]="true"
 [(visible)]="stepByStepVisible" 
 (onHide)="stepByStepVisible = false">
-   <div>
     <app-step-by-step></app-step-by-step>
-   </div>
 </p-dialog>
 <p-dialog 
 [style]="{ width: '30vw' }"

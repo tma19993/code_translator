@@ -9,6 +9,7 @@ export class CodingService {
   public disableStepByStep: boolean = true;
   public disableLearning: boolean = true;
   public disablePDF: boolean = true;
+  public combinationCoding: Combination;
   constructor(private textCodingService: TextCodingService, private binaryCodingService: BinaryCodingService) {}
 
   public convert(message: string, combination: Combination): string {
