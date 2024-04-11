@@ -9,21 +9,20 @@ import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DialogModule } from 'primeng/dialog';
-import { TranslationComponent } from './components/translation/translation.component';
-import { MenuComponent } from './components/menu/menu.component';
 import { CheckboxModule } from 'primeng/checkbox';
-import { DownloadComponent } from './components/download/download.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EncodingMessagesComponent } from './components/encoding-messages/encoding-messages.component';
 import { CodingService } from './services';
 import { BinaryCodingService, TextCodingService } from './services/coding-services';
+import { DownloadComponent, EncodingMessagesComponent, LearingComponent, MenuComponent, StepByStepComponent, TranslationComponent } from './components';
 @NgModule({
   declarations: [
     AppComponent,
     TranslationComponent,
     MenuComponent,
     DownloadComponent,
-    EncodingMessagesComponent
+    EncodingMessagesComponent,
+    StepByStepComponent,
+    LearingComponent
   ],
   imports: [
     FormsModule,
