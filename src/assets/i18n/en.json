@@ -7,6 +7,10 @@
         "pdf":"pdf",
         "download":"download"
     },
+    "result":{
+        "inputData":"input data",
+        "result":"conversion result"
+    },
     "learningSection":{
         
     },
@@ -14,9 +18,9 @@
 
     },
     "downloadSection":{
-        "result":"result",
-        "learning": "learning",
-        "stepByStep": "step by step"
+        "result":"Result",
+        "learning": "Learning",
+        "stepByStep": "Step by Step"
     },
     "encodingMessagesSection":{
         "dropdownPlaceholder":"select type of code",

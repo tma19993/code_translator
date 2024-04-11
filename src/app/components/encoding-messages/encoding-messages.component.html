@@ -17,7 +17,8 @@
         [autoResize]="true"  
         [placeholder]="'encodingMessagesSection.encodeTextareaPlaceholder' | translate | titlecase"></textarea>
     </div>
-    <p-button (onClick)="switchMessages()" [disabled]="!form.get('codedMessage')?.valid" class="change-button mt-5" icon="pi pi-arrow-right-arrow-left" size="large" ></p-button>
+    
+    <p-button (onClick)="switchMessages()" [disabled]="!submit && !form.get('codedMessage')?.valid && !(!!form.get('selectedEncode')?.value && !!form.get('selectedCoded')?.value)" class="change-button mt-5" icon="pi pi-arrow-right-arrow-left" size="large" ></p-button>
     <div class="d-flex flex-column ms-4">
       <p-dropdown 
         [class]="form.get('selectedCoded')?.invalid  && submit? 'ng-dirty ng-invalid my-3' : 'my-3'"
@@ -45,3 +46,9 @@
 </div>
 </form>
 
+<div #result>
+  <div class="result">
+    <p>{{"result.inputData" | translate | titlecase}}: {{form.get("encodeMessage")?.value}}</p>
+    <p>{{"result.result" | translate | titlecase}}: {{form.get("codedMessage")?.value}}</p>
+  </div>
+</div>

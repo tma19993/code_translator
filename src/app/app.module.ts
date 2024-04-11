@@ -16,6 +16,7 @@ import { DownloadComponent } from './components/download/download.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EncodingMessagesComponent } from './components/encoding-messages/encoding-messages.component';
 import { CodingService } from './services';
+import { BinaryCodingService, TextCodingService } from './services/coding-services';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,11 @@ import { CodingService } from './services';
       }
   })
   ],
-  providers: [CodingService],
+  providers: [
+    CodingService,
+    TextCodingService,
+    BinaryCodingService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

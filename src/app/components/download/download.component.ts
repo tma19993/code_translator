@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import * as pdfMake from "pdfMake/build/pdfMake";
-import * as pdfFonts from "pdfMake/build/vfs_fonts";
+import { GenerateAction } from 'src/app/constants';
+import { DownloadFilesService } from 'src/app/services';
 
-(pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-download',
   templateUrl: './download.component.html',
@@ -11,42 +10,26 @@ import * as pdfFonts from "pdfMake/build/vfs_fonts";
 })
 export class DownloadComponent {
   public selectedValues: string[] = [];
-  constructor(private translate: TranslateService) {}
+  constructor(private translate: TranslateService, private downloadFilesService: DownloadFilesService) {}
 
   public submit(): void {
     this.selectedValues.forEach((value) => {
       switch (value) {
         case 'result':
-          this.downloadResult();
+          this.downloadFilesService.generatePDF(GenerateAction.result, this.translate.instant("downloadSection.result"));
           break;
         case 'stepByStep':
-          this.downloadStepByStep();
+          this.downloadFilesService.generatePDF(GenerateAction.stepByStep, this.translate.instant("downloadSection.stepByStep"));
           break;
         case 'learning':
-          this.downloadLearning();
+          this.downloadFilesService.generatePDF(GenerateAction.learning, this.translate.instant("downloadSection.learning"));
           break;
         default:
       }
     });
   }
 
-  private downloadResult(): void{
-    this.generatePDF("result", this.translate.instant("downloadSection.result"));
-  }
 
-  private downloadStepByStep(): void{
-    this.generatePDF("stepByStep", this.translate.instant("downloadSection.stepByStep"));
-  }
 
-  private downloadLearning(): void{
-   this.generatePDF("learning", this.translate.instant("downloadSection.learning"));
-  }
-
-  private generatePDF(content: any, fileName: string): void {
-    const docDefinition = {
-      content: [content],
-    };
-    pdfMake.createPdf(docDefinition).download(fileName);
-  }
 }
 

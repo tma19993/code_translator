@@ -78,14 +78,6 @@ export const dropdownCodeList: DropdownCodeListType[] = [
     code: 'gray',
     encodeList: [
       {
-        name: 'BCD',
-        code: 'bcd',
-      },
-      {
-        name: '7 Segment',
-        code: '7segment',
-      },
-      {
         name: 'Binary',
         code: 'binary',
       },
@@ -96,14 +88,6 @@ export const dropdownCodeList: DropdownCodeListType[] = [
     code: 'bcd',
     encodeList: [
       {
-        name: 'Gray',
-        code: 'gray',
-      },
-      {
-        name: '7 Segment',
-        code: '7segment',
-      },
-      {
         name: 'Binary',
         code: 'binary',
       },
@@ -113,14 +97,6 @@ export const dropdownCodeList: DropdownCodeListType[] = [
     name: '7 Segment',
     code: '7segment',
     encodeList: [
-      {
-        name: 'Gray',
-        code: 'gray',
-      },
-      {
-        name: 'BCD',
-        code: 'bcd',
-      },
       {
         name: 'Binary',
         code: 'binary',

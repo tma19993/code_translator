@@ -1,23 +1,29 @@
-:host{
-    .change-button {
-        ::ng-deep{
-            .p-button{
-                background: transparent;
-                border-radius: 50%;
-                &:enabled:hover{
-                    border-color: #fff;
-                }
-            }
-        }
-        align-self: center;
-    }
-     .submit ::ng-deep{
-        font-size: 24px;
-     }
+:host {
+  .change-button {
+    ::ng-deep {
+      .p-button {
+        background: transparent;
+        border-radius: 50%;
 
-     p-dropdown.ng-dirty.ng-invalid  ::ng-deep .p-dropdown,
-      textarea.ng-dirty.ng-invalid  {
-        border-width: 2px;
+        &:enabled:hover {
+          border-color: #fff;
         }
-     
+      }
+    }
+    align-self: center;
+  }
+
+  .submit ::ng-deep {
+    font-size: 24px;
+  }
+
+  p-dropdown.ng-dirty.ng-invalid ::ng-deep .p-dropdown,
+  textarea.ng-dirty.ng-invalid {
+    border-width: 2px;
+  }
+
+  .result {
+    color: rgba(59, 130, 246, 1);
+  }
+
 }
