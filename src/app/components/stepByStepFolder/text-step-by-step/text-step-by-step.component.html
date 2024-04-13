@@ -1,0 +1,76 @@
+<section #stepByStepElement>
+    <div *ngIf="combiantion.fromEncoding == TypeOfCoding.text || combiantion.toEncoding == TypeOfCoding.text; else other" class="mx-5">
+        <p>wiadomość przed zakodowaniem to: {{codingService.message}}</p>
+        <p>Szukamy w znaków z wiadomości w tabeli (podświetli się na niebiesko)</p>
+        <div *ngIf="combiantion.fromEncoding == TypeOfCoding.ascii  || combiantion.toEncoding == TypeOfCoding.ascii" >
+            <ng-container *ngTemplateOutlet="tableASCII"></ng-container>
+        </div>
+        <div *ngIf=" combiantion.toEncoding == TypeOfCoding.utf8 || combiantion.fromEncoding == TypeOfCoding.utf8" >
+           <ng-container *ngTemplateOutlet="tableUtf8"></ng-container>
+        </div>
+        <div *ngIf="combiantion.toEncoding == TypeOfCoding.iso8859 || combiantion.fromEncoding == TypeOfCoding.iso8859 " >
+         <ng-container *ngTemplateOutlet="tableISO"></ng-container>
+        </div>
+        <p>Wiadomość po zakodowaniu: {{codingService.convert(codingService.message,codingService.combinationCoding)}}</p>
+    </div>
+</section>
+<ng-template #other>
+    <p>wiadomość przed zakodowaniem to: {{codingService.message}}</p>
+    <p>Szukamy w znaków z wiadomości w tabeli (znaki do zakodowania podświetlą się na niebiesko a zakodowana na zielono)</p>
+    <div *ngIf="combiantion.fromEncoding == TypeOfCoding.ascii  || combiantion.toEncoding == TypeOfCoding.ascii" >
+        <ng-container *ngTemplateOutlet="tableASCII; context: {firstTable: combiantion.fromEncoding == TypeOfCoding.ascii}"></ng-container>
+    </div>
+    <div *ngIf="combiantion.toEncoding == TypeOfCoding.iso8859 || combiantion.fromEncoding == TypeOfCoding.iso8859 " >
+        <ng-container *ngTemplateOutlet="tableISO;context: {firstTable: combiantion.fromEncoding == TypeOfCoding.iso8859 }"></ng-container>
+       </div>
+    <div *ngIf=" combiantion.toEncoding == TypeOfCoding.utf8 || combiantion.fromEncoding == TypeOfCoding.utf8" >
+       <ng-container *ngTemplateOutlet="tableUtf8; context:{firstTable: combiantion.fromEncoding == TypeOfCoding.utf8}"></ng-container>
+    </div>
+    <p>Wiadomość po zakodowaniu: {{codingService.convert(codingService.message,codingService.combinationCoding)}}</p>
+</ng-template>
+<ng-template #tableUtf8 let-firstTable="firstTable">
+    <p class="text-center">Tabela UTF-8</p>
+    <div class="my-5" style="overflow-x: auto;">
+        <table class="d-flex" style="max-height: 300px;">
+          <tr>
+            <td style="min-width: 50px;">Kod</td>
+            <td style="min-width: 50px;">Znak</td>
+          </tr>
+          <tr  *ngFor="let char of utf8Table; let i = index" style="min-width: 60px;"  [ngClass]="{ 'finded-encode-value': findEncodeCharacter(i), 'finded-coded-value': findCodedCharacter(i) && !(this.combiantion.fromEncoding ==TypeOfCoding.text  || this.combiantion.toEncoding ==TypeOfCoding.text) && !firstTable}">
+            <td>{{char.codePoint}}: </td>
+            <td>{{char.character}}</td>
+          </tr>
+        </table>
+      </div>
+  </ng-template>
+  <ng-template #tableISO let-firstTable="firstTable">
+    <p class="text-center">Tabela ISO-8859</p>
+    <div class="my-5" style="overflow-x: auto;">
+      <table class="d-flex" style="max-height: 300px;">
+        <tr>
+          <td style="min-width: 50px;">Kod</td>
+          <td style="min-width: 50px;">Znak</td>
+        </tr>
+        <tr *ngFor="let char of isoCodes; let i = index" style="min-width: 60px;"  [ngClass]="{ 'finded-encode-value': findEncodeCharacter(i), 'finded-coded-value': findCodedCharacter(i) && !(this.combiantion.fromEncoding ==TypeOfCoding.text  || this.combiantion.toEncoding ==TypeOfCoding.text)  && !firstTable }">
+            <td>{{char.codePoint}}: </td>
+            <td>{{char.character}}</td>
+        </tr>
+      </table>
+      </div>
+  </ng-template>
+  <ng-template #tableASCII let-firstTable="firstTable">
+    <p class="text-center">Tabela ASCII</p>
+    <div class="my-5" style="overflow-x: auto;">
+      <table class="d-flex" style="max-height: 300px;">
+        <tr>
+          <td style="min-width: 50px;">Kod</td>
+          <td style="min-width: 50px;">Znak</td>
+        </tr>
+        <tr  *ngFor="let char of asciiTable; let i = index" style="min-width: 60px;" 
+        [ngClass]="{ 'finded-encode-value': findEncodeCharacter(i) , 'finded-coded-value': findCodedCharacter(i) && !(this.combiantion.fromEncoding ==TypeOfCoding.text  || this.combiantion.toEncoding ==TypeOfCoding.text)  && !firstTable}">
+            <td>{{char.codePoint}}: </td>
+            <td>{{char.character}}</td>
+        </tr>
+      </table>
+      </div>
+  </ng-template>

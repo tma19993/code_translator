@@ -8,7 +8,7 @@
   <p>Kodowanie jak i dekodowanie wiadomości w Utf-8 polega na wyszukiwaniu danych w tabeli Utf-8. Na przykład słowo "Rower".</p>
   <p>Przy kodowaniu wiadomości należy szukamy liter w tabeli będą to R: 82, o: 111, w: 119, e: 101, r: 114. Postać ASCII to 82,111,119,101,114.</p>
   <p> Przy dekodowaniu wiadomości mamy liczby 82,111,119,101,114. Szukamy w tabeli Utf-8 po stronie dziesiętnej R: 82, o: 111, w: 119, e: 101, r: 114. Wychodzi słowo "Rower"</p>
-    <ng-container *ngTemplateOutlet="tableASCII"></ng-container>
+    <ng-container *ngTemplateOutlet="tableUtf8"></ng-container>
  </div>
  <div *ngIf="(combiantion.fromEncoding == TypeOfCoding.text && combiantion.toEncoding == TypeOfCoding.iso8859) || (combiantion.fromEncoding == TypeOfCoding.iso8859 && combiantion.toEncoding == TypeOfCoding.text)" class="mx-5">
   <p>Kodowanie ISO-8859  polega na dopasowaniu znaków w tekście wejściowym do odpowiadających im kodów znaków w ISO-8859-1.</p> 
@@ -34,47 +34,47 @@
  </div>
 
  <ng-template #tableUtf8>
-    <p class="text-center">Tabela UTF-8</p>
-    <div class="my-5" style="overflow-x: auto;">
-        <table class="d-flex" style="max-height: 300px;">
-          <tr>
-            <td style="min-width: 50px;">Decimal:</td>
-            <td style="min-width: 50px;">ASCII</td>
-          </tr>
-          <tr  *ngFor="let char of asciiTable" style="min-width: 60px;">
-            <td>{{char.decimal}}: </td>
-            <td>{{char.ascii}}</td>
-          </tr>
-        </table>
-      </div>
-  </ng-template>
-  <ng-template #tableISO>
-    <p class="text-center">Tabela ISO-8859</p>
-    <div class="my-5" style="overflow-x: auto;">
+  <p class="text-center">Tabela UTF-8</p>
+  <div class="my-5" style="overflow-x: auto;">
       <table class="d-flex" style="max-height: 300px;">
         <tr>
           <td style="min-width: 50px;">Kod</td>
           <td style="min-width: 50px;">Znak</td>
         </tr>
-        <tr *ngFor="let code of isoCodes" style="min-width: 60px;">
-          <td>{{ code }}</td>
-          <td>{{ fromCharCode(code) }}</td>
+        <tr  *ngFor="let char of utf8Table" style="min-width: 60px;">
+          <td>{{char.codePoint}}: </td>
+          <td>{{char.character}}</td>
         </tr>
       </table>
-      </div>
-  </ng-template>
-  <ng-template #tableASCII>
-    <p class="text-center">Tabela ASCII</p>
-    <div class="my-5" style="overflow-x: auto;">
-      <table class="d-flex" style="max-height: 300px;">
-        <tr>
-          <td style="min-width: 50px;">Decimal:</td>
-          <td style="min-width: 50px;">ASCII</td>
-        </tr>
-        <tr  *ngFor="let char of asciiTable" style="min-width: 60px;">
-          <td>{{char.decimal}}: </td>
-          <td>{{char.ascii}}</td>
-        </tr>
-      </table>
-      </div>
-  </ng-template>
+    </div>
+</ng-template>
+<ng-template #tableISO>
+  <p class="text-center">Tabela ISO-8859</p>
+  <div class="my-5" style="overflow-x: auto;">
+    <table class="d-flex" style="max-height: 300px;">
+      <tr>
+        <td style="min-width: 50px;">Kod</td>
+        <td style="min-width: 50px;">Znak</td>
+      </tr>
+      <tr *ngFor="let char of isoCodes" style="min-width: 60px;">
+          <td>{{char.codePoint}}: </td>
+          <td>{{char.character}}</td>
+      </tr>
+    </table>
+    </div>
+</ng-template>
+<ng-template #tableASCII>
+  <p class="text-center">Tabela ASCII</p>
+  <div class="my-5" style="overflow-x: auto;">
+    <table class="d-flex" style="max-height: 300px;">
+      <tr>
+        <td style="min-width: 50px;">Kod</td>
+        <td style="min-width: 50px;">Znak</td>
+      </tr>
+      <tr  *ngFor="let char of asciiTable" style="min-width: 60px;">
+          <td>{{char.codePoint}}: </td>
+          <td>{{char.character}}</td>
+      </tr>
+    </table>
+    </div>
+</ng-template>

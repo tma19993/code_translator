@@ -1,26 +1,27 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TypeOfCoding } from 'src/app/constants';
 import { Combination } from 'src/app/types';
+import { TableCodes } from 'src/app/types/tableCodes.type';
 
 @Component({
   selector: 'app-text-learning',
   templateUrl: './text-learning.component.html',
-  styleUrl: './text-learning.component.scss'
+  styleUrl: './text-learning.component.scss',
 })
 export class TextLearningComponent implements OnInit {
   @Input() public combiantion: Combination;
-  public asciiTable: { decimal: number; ascii: string }[] = [];
-  public utf8Table: { codePoint: number; character: string }[] = [];
-  public isoCodes: number[] = [];
-  protected readonly TypeOfCoding: any =  TypeOfCoding;
+  public asciiTable: TableCodes[] = [];
+  public utf8Table: TableCodes[] = [];
+  public isoCodes: TableCodes[] = [];
+  protected readonly TypeOfCoding: any = TypeOfCoding;
 
-  constructor(){}
+  constructor() {}
 
   public ngOnInit(): void {
-      this.tableInit();
+    this.tableInit();
   }
 
-  public  fromCharCode(code: number): string {
+  public fromCharCode(code: number): string {
     return String.fromCharCode(code);
   }
 
@@ -44,20 +45,21 @@ export class TextLearningComponent implements OnInit {
 
   private generateAsciiTable() {
     for (let i = 0; i < 128; i++) {
-      this.asciiTable.push({ decimal: i, ascii: String.fromCharCode(i) });
+      this.asciiTable.push({
+        codePoint: i,
+        character: String.fromCodePoint(i),
+      });
     }
   }
 
   private generateUtf8Table() {
     for (let i = 0; i < 256; i++) {
-      const character = String.fromCodePoint(i);
-      this.utf8Table.push({ codePoint: i, character: character });
+      this.utf8Table.push({ codePoint: i, character: String.fromCodePoint(i) });
     }
   }
   private generateIsoTable() {
     for (let i = 0; i < 256; i++) {
-      this.isoCodes.push(i);
+      this.isoCodes.push({ codePoint: i, character: String.fromCodePoint(i) });
     }
   }
-
 }

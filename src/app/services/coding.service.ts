@@ -10,9 +10,11 @@ export class CodingService {
   public disableLearning: boolean = true;
   public disablePDF: boolean = true;
   public combinationCoding: Combination;
+  public message:string = "";
   constructor(private textCodingService: TextCodingService, private binaryCodingService: BinaryCodingService) {}
 
   public convert(message: string, combination: Combination): string {
+    this.message = message;
     const { fromEncoding } = combination;
     if(fromEncoding == "text" || fromEncoding == "ascii" || fromEncoding == "utf8" || fromEncoding == "iso8859"){
     return this.textCodingService.convertTextMessage(message, combination);
@@ -21,5 +23,4 @@ export class CodingService {
       return this.binaryCodingService.convertBinaryMessage(message, combination);
     }
   }
-
 }

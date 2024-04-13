@@ -100,15 +100,30 @@ export class BinaryCodingService {
     const number = Number(message);
     if (number >= 0 && number <= 9) {
       return this.patterns[number];
+    } else if (number >= 10) {
+      let numbersArray: string[] = [];
+      for (let i = 0; i < message.length; i++) {
+        numbersArray.push(this.patterns[i]);
+      }
+      return numbersArray.join(' ');
     } else {
       return 'Invalid decimal input';
     }
   }
 
   private sevenSegmentToNumber(message: string): string {
+    if (message.length <= 7) {
+      return 'Invalid seven-segment input';
+    }
     const index = this.patterns.indexOf(message);
-    if (index !== -1) {
+    if (message.length == 7) {
       return index.toString();
+    } else if (message.length % 7 == 0) {
+      let splittedStrings: string[] = [];
+      for (let i = 0; i < message.length; i += 7) {
+        splittedStrings.push(message.substr(i, 7));
+      }
+      return splittedStrings.join('');
     } else {
       return 'Invalid seven-segment input';
     }
