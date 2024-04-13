@@ -60,6 +60,10 @@ export class EncodingMessagesComponent implements OnInit {
     this.form.controls["codedMessage"].setValue("");
   }
 
+  public selectedCodedChange(): void { 
+    this.form.controls["codedMessage"].setValue("");
+  }
+
   public changeCodedList(list: DropdownCodeListType): void {
     if (this.form.value.selectedEncode !== "") {
       this.form.get("selectedCoded")?.enable();

@@ -13,7 +13,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CodingService } from './services';
 import { BinaryCodingService, TextCodingService } from './services/coding-services';
-import { DownloadComponent, EncodingMessagesComponent, LearingComponent, MenuComponent, StepByStepComponent, TranslationComponent } from './components';
+import { BinaryLearningComponent, DownloadComponent, EncodingMessagesComponent, LearingComponent, MenuComponent, StepByStepComponent, TextLearningComponent, TranslationComponent } from './components';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 @NgModule({
   declarations: [
@@ -23,7 +23,9 @@ import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
     DownloadComponent,
     EncodingMessagesComponent,
     StepByStepComponent,
-    LearingComponent
+    LearingComponent,
+    TextLearningComponent,
+    BinaryLearningComponent
   ],
   imports: [
     DynamicDialogModule,

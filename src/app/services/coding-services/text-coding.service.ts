@@ -79,11 +79,11 @@ export class TextCodingService {
   private textToIso8859(message: string): string {
     const encoder = new TextEncoder();
     const uint8Array = encoder.encode(message);
-    return String.fromCharCode.apply(null, Array.from(uint8Array));
+    return encoder.encode(message).toString();
   }
 
   private iso8859ToText(message: string): string {
-    const decoder = new TextDecoder("latin1");
+    const decoder = new TextDecoder('iso-8859-1');
     const numbersArray: number[] = message.split(",").map(Number);
     const decodeMessage: Uint8Array = new Uint8Array(numbersArray);
     return decoder.decode(decodeMessage);

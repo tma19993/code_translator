@@ -23,6 +23,7 @@
       <p-dropdown 
         [class]="form.get('selectedCoded')?.invalid  && submit? 'ng-dirty ng-invalid my-3' : 'my-3'"
         optionLabel="name" 
+        (onChange)="selectedCodedChange()"
         formControlName="selectedCoded" 
         [autoDisplayFirst]="false"
         [options]="dropdownEncodeList" 
