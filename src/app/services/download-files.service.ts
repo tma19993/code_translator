@@ -2,6 +2,7 @@ import { ElementRef, Injectable } from '@angular/core';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { LearingComponent } from '../components';
+import { GenerateAction } from '../constants';
 
 type generateAction = 'result' | 'stepByStep' | 'learning';
 @Injectable({
@@ -15,13 +16,13 @@ export class DownloadFilesService {
 
   public generatePDF(content: generateAction, fileName: string): void {
     let doc = new jsPDF('l', 'px', 'a4');
-    if (content == 'result') {
+    if (content == GenerateAction.result) {
       doc.html(this.resultElement.nativeElement, {
         callback: () => {
           doc.save(fileName);
         },
       });
-    } else if (content == 'learning') {
+    } else if (content == GenerateAction.learning) {
       doc.html(this.learningElement.nativeElement, {
         callback: () => {
           doc.save(fileName);

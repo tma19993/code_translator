@@ -1,6 +1,7 @@
 <section #learningElement>
-    {{codingService.combinationCoding}}
- <div *ngIf="codingService.combinationCoding == { fromEncoding: 'ascii',toEncoding: 'text'} || codingService.combinationCoding == { fromEncoding: 'text',toEncoding: 'ascii'}" class="mx-5">
+  {{combiantion.fromEncoding}}
+  {{combiantion.toEncoding}}
+ <div *ngIf="(combiantion.fromEncoding == 'ascii' && combiantion.toEncoding == 'text') || (combiantion.fromEncoding == 'text' && combiantion.toEncoding == 'ascii')" class="mx-5">
     <p>Kodowanie jak i dekodowanie wiadomości w ASCII polega na wyszukiwaniu danych w tabeli ASCII. Na przykład słowo "Rower".</p>
     <div class="my-5" style="overflow-x: auto;">
         <table class="d-flex" style="max-height: 300px;">
@@ -17,7 +18,13 @@
       <p>Przy kodowaniu wiadomości należy szukamy liter w tabeli będą to R: 82, o: 111, w: 119, e: 101, r: 114. Postać ASCII to 82,111,119,101,114.</p>
      <p> Przy dekodowaniu wiadomości mamy liczby 82,111,119,101,114. Szukamy w tabeli ASCII po stronie dziesiętnej R: 82, o: 111, w: 119, e: 101, r: 114. Wychodzi słowo "Rower"</p>
  </div>
- <div *ngIf="codingService.combinationCoding == { fromEncoding: 'ascii',toEncoding: 'utf-8'}" class="mx-5">
+ <div *ngIf="(combiantion.fromEncoding == 'text' && combiantion.toEncoding == 'utf8') || (combiantion.fromEncoding == 'utf8' && combiantion.toEncoding == 'text')" class="mx-5">
+  text utf8
+ </div>
+ <div *ngIf="(combiantion.fromEncoding == 'text' && combiantion.toEncoding == 'iso8859') || (combiantion.fromEncoding == 'iso8859' && combiantion.toEncoding == 'text')" class="mx-5">
+  text iso
+ </div>
+ <div *ngIf="(combiantion.fromEncoding == 'ascii' && combiantion.toEncoding == 'utf8') || (combiantion.fromEncoding == 'utf8' && combiantion.toEncoding == 'ascii')" class="mx-5">
     <p>Kodowanie Wiadomości z ASCII na UTF-8 jest </p>
     <div class="my-5" style="overflow-x: auto;">
         <table class="d-flex" style="max-height: 300px;">
@@ -31,6 +38,12 @@
           </tr>
         </table>
       </div>
+ </div>
+ <div *ngIf="(combiantion.fromEncoding == 'ascii' && combiantion.toEncoding == 'iso8859') || (combiantion.fromEncoding == 'iso8859' && combiantion.toEncoding == 'ascii')" class="mx-5">
+  ascii iso
+ </div>
+ <div *ngIf="(combiantion.fromEncoding == 'ascii' && combiantion.toEncoding == 'iso8859') || (combiantion.fromEncoding == 'iso8859' && combiantion.toEncoding == 'ascii')" class="mx-5">
+  ascii iso
  </div>
 
 </section> 

@@ -1,5 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Type } from '@angular/core';
+import { DialogService } from 'primeng/dynamicdialog';
 import { CodingService } from 'src/app/services';
+import { Combination } from 'src/app/types';
+import { LearingComponent } from '../learing/learing.component';
+import { TranslateService } from '@ngx-translate/core';
+import { StepByStepComponent } from '../step-by-step/step-by-step.component';
+import { DownloadComponent } from '../download/download.component';
 
 @Component({
   selector: 'app-menu',
@@ -7,26 +13,35 @@ import { CodingService } from 'src/app/services';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent {
-  public learningVisible: boolean = false;
-  public stepByStepVisible: boolean = false;
-  public pdfVisible: boolean = false;
+  constructor(
+    public codingService: CodingService,
+    public dialogService: DialogService,
+    private translate: TranslateService
+  ) {}
 
-  constructor(public codingService: CodingService) {}
-
-  public openDialog(dialogName: string): void {
-    this.learningVisible = false;
-    this.stepByStepVisible = false;
-    this.pdfVisible = false;
+  public open(dialogName: string): void {
     switch (dialogName) {
       case 'learning':
-        this.learningVisible = true;
+        this.openDialog(LearingComponent, this.translate.instant('menuButtons.learning'));
+
         break;
       case 'stepByStep':
-        this.stepByStepVisible = true;
+        this.openDialog(StepByStepComponent, this.translate.instant('menuButtons.learning'));
         break;
       case 'pdf':
-        this.pdfVisible = true;
+        this.openDialog(DownloadComponent, this.translate.instant('menuButtons.learning'));
         break;
     }
+  }
+  public openDialog(component: Type<any>, header: string, data?: {}): void {
+    this.dialogService.open(component, {
+      header: header,
+      width: '40vw',
+      modal: true,
+      breakpoints: {
+        '960px': '75vw',
+        '640px': '90vw',
+      },
+    });
   }
 }

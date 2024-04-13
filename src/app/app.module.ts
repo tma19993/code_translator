@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CodingService } from './services';
 import { BinaryCodingService, TextCodingService } from './services/coding-services';
 import { DownloadComponent, EncodingMessagesComponent, LearingComponent, MenuComponent, StepByStepComponent, TranslationComponent } from './components';
+import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { DownloadComponent, EncodingMessagesComponent, LearingComponent, MenuCom
     LearingComponent
   ],
   imports: [
+    DynamicDialogModule,
     FormsModule,
     ReactiveFormsModule,
     ButtonModule,
@@ -44,6 +46,7 @@ import { DownloadComponent, EncodingMessagesComponent, LearingComponent, MenuCom
   })
   ],
   providers: [
+    DialogService,
     CodingService,
     TextCodingService,
     BinaryCodingService

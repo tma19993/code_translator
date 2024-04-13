@@ -1,30 +1,5 @@
 <section class="menu d-flex justify-content-center flex-column flex-md-row">
-    <p-button size="large" [disabled]="codingService.disableLearning" [label]="'menuButtons.learning' | translate | uppercase" (onClick)="openDialog('learning')"></p-button>
-    <p-button size="large" [disabled]="codingService.disableStepByStep" [label]="'menuButtons.stepByStep' | translate | uppercase" (onClick)="openDialog('stepByStep')"></p-button>
-    <p-button size="large" [disabled]="codingService.disablePDF" [label]="'menuButtons.pdf' | translate | uppercase" (onClick)="openDialog('pdf')"></p-button>
+    <p-button size="large" [disabled]="codingService.disableLearning" [label]="'menuButtons.learning' | translate | uppercase" (onClick)="open('learning')"></p-button>
+    <p-button size="large" [disabled]="codingService.disableStepByStep" [label]="'menuButtons.stepByStep' | translate | uppercase" (onClick)="open('stepByStep')"></p-button>
+    <p-button size="large" [disabled]="codingService.disablePDF" [label]="'menuButtons.pdf' | translate | uppercase" (onClick)="open('pdf')"></p-button>
 </section>
-
-<p-dialog 
-[style]="{ width: '50vw' }"
-[header]="'menuButtons.learning' | translate" 
-[maximizable]="true"
-[(visible)]="learningVisible" 
-(onHide)="learningVisible = false">
-<app-learing></app-learing>
-</p-dialog>
-<p-dialog 
-[style]="{ width: '50vw' }"
-[header]="'menuButtons.stepByStep' | translate" 
-[maximizable]="true"
-[(visible)]="stepByStepVisible" 
-(onHide)="stepByStepVisible = false">
-    <app-step-by-step></app-step-by-step>
-</p-dialog>
-<p-dialog 
-[style]="{ width: '30vw' }"
-[header]="'menuButtons.pdf' | translate | uppercase" 
-[maximizable]="true"
-[(visible)]="pdfVisible" 
-(onHide)="pdfVisible = false">
-   <app-download></app-download>
-</p-dialog>
