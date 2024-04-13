@@ -20,7 +20,7 @@ export class DownloadFilesService {
       doc.text(this.resultElement,30, 10);
       doc.save(fileName);
     } else if (content == GenerateAction.learning) {
-      doc.html(this.learningElement.nativeElement, {width: 200,
+      doc.html(this.learningElement.nativeElement, {width: 2000,
         callback: () => {
           doc.save(fileName);
         },
