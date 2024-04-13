@@ -1,122 +1,60 @@
 <div *ngIf="combiantion.fromEncoding == TypeOfCoding.binary && combiantion.toEncoding == TypeOfCoding.gray"
   class="mx-5">
-  <p>wiadomość przed zakodowaniem to: {{codingService.message}}</p>
-  <p>
-    1. Rozpocznij od najbardziej znaczącego bitu (MSB czyli pierwszy od lewej) <br>
-    2. Zachowaj pierwszy bit (MSB czyli pierwszy od lewej) kodu binarnego jako pierwszy bit kodu Graya <br>
-    3. Następnie wykonaj operację XOR między każdym kolejnym bitem kodu binarnego, a poprzednim bitem kodu binarnego,
-    aby uzyskać bity kodu Graya <br>
-    4. Powtarzaj ten proces dla każdego bitu kodu binarnego, aby uzyskać cały kod Graya <br>
-  </p>
-  <p>Przykład kod binarny 1010</p>
-  <p>
-    1. Pierwszy bit (MSB) pozostaje taki sam: 1 <br>
-    2. XOR drugiego bitu z pierwszym: 1 XOR 0 = 1 <br>
-    3. XOR trzeciego bitu z drugim: 0 XOR 1 = 1 <br>
-    4. XOR czwartego bitu z trzecim: 1 XOR 0 = 1 <br>
-  </p>
+  <p>Wiadomość przed zakodowaniem to: {{codingService.message}}</p>
+  <div *ngFor="let char of splitDescription(codingService.message); index as i">
+    <p *ngIf="i === 0; else other">{{i}}. {{char}}</p>
+    <ng-template #other>
+      <p>{{i}}. {{char}} XOR  {{splitDescription(codingService.message)[i-1]}} = {{ binaryCodingService.binaryToGraySingleChar(char, splitDescription(codingService.message)[i-1])}}</p>
+    </ng-template>
+  </div>
   <p>Wiadomość po zakodowaniu: {{codingService.convert(codingService.message,codingService.combinationCoding)}}</p>
 </div>
 <div *ngIf="combiantion.fromEncoding == TypeOfCoding.gray && combiantion.toEncoding == TypeOfCoding.binary"
   class="mx-5">
-  <p>Dekodowanie kodu binarnego z kod graya polega na odtworzeniu każdego bitu tekstu binarnego poprzez wykonanie
-    operacji XOR między odpowiadającym mu bitem kodu Graya, a poprzednim bitem tekstu binarnego. Oto kroki dekodowania z
-    kodu binarnego z kodu graya:</p>
-  <p>
-    1. Rozpocznij od najbardziej znaczącego bitu (MSB czyli pierwszy od lewej) <br>
-    2. Pierwszy bit (MSB czyli pierwszy od lewej) tekstu binarnego jest taki sam jak pierwszy bit kodu Graya <br>
-    3. Każdy kolejny bit tekstu binarnego jest wynikiem operacji XOR między odpowiadającym mu bitem kodu Graya, a
-    poprzednim bitem tekstu binarnego <br>
-    4. Powtarzaj ten proces dla każdego bitu kodu Graya, aby uzyskać cały tekst binarny <br>
-  </p>
-  <p>Przykład kod Graya 1111</p>
-  <p>
-    1. Pierwszy bit (MSB) pozostaje taki sam: 1 <br>
-    2. XOR drugiego bitu z pierwszym (MSB kodu Graya) i pierwszym bitem tekstu binarnego (pierwszym bitem tekstu
-    binarnego): 1 XOR 1 = 0 <br>
-    3. XOR trzeciego bitu z drugim bitem kodu Graya i drugim bitem tekstu binarnego: 1 XOR 0 = 1. <br>
-    4. XOR czwartego bitu z trzecim bitem kodu Graya i trzecim bitem tekstu binarnego: 1 XOR 1 = 0 <br>
-  </p>
-  <p>Wynik to kod binarny: 1000</p>
+  <p>Wiadomość przed zakodowaniem to: {{codingService.message}}</p>
+  <div *ngFor="let char of splitDescription(codingService.message); index as i">
+    <p *ngIf="i === 0; else other">{{i}}. {{char}}</p>
+    <ng-template #other>
+      <p>{{i}}. {{char}} XOR  {{codingService.convert(codingService.message,codingService.combinationCoding)[i-1]}} = {{ binaryCodingService.grayToBinarySingleChar(char,codingService.convert(codingService.message,codingService.combinationCoding)[i-1])}}</p>
+  </ng-template>
+  </div>
+  <p>Wiadomość po zakodowaniu: {{codingService.convert(codingService.message,codingService.combinationCoding)}}</p>
 </div>
 <div *ngIf="combiantion.fromEncoding == TypeOfCoding.number && combiantion.toEncoding == TypeOfCoding.bcd" class="mx-5">
-  <p>Kod BCD (Binary-Coded Decimal) to sposób reprezentacji liczb w postaci binarnej, gdzie każda cyfra dziesiętna jest
-    reprezentowana przez jej odpowiednik binarny. W kodzie BCD każda cyfra dziesiętna jest reprezentowana przez cztery
-    bity binarne.</p>
-  <p>
-    1. Podziel liczbę dziesiętną na cyfry dziesiętne<br>
-    2. Przedstaw każdą cyfrę dziesiętną w formie binarnej <br>
-    3. Uzupełnij każdy binarny zapis cyfry dziesiętnej do 4 bitów (możliwe jest użycie wiodących zer) <br>
-  </p>
-  <p>Przykład liczba dziesiętna 56:</p>
-  <p>
-    Cyfra dziesiątek: 5 (101 w formie binarnej) <br>
-    Cyfra jedności: 6 (110 w formie binarnej) <br>
-    Po uzupełnieniu do 4 bitów otrzymujemy: 0101 i 0110 <br>
-  </p>
-  <p>Wynik to: 0101 0110</p>
+  <p>Wiadomość przed zakodowaniem to: {{codingService.message}}</p>
+  <div *ngFor="let char of splitDescription(codingService.message); index as i">
+    <p>{{char}} = {{convertToBinary(char)}} w systemie dwójkowym</p>
+  </div>
+  <p>Wiadomość po zakodowaniu: {{codingService.convert(codingService.message,codingService.combinationCoding)}}</p>
 </div>
 <div *ngIf="combiantion.fromEncoding == TypeOfCoding.bcd && combiantion.toEncoding == TypeOfCoding.number" class="mx-5">
-  <p>Kod BCD (Binary-Coded Decimal) to sposób reprezentacji liczb w postaci binarnej, gdzie każda cyfra dziesiętna jest
-    reprezentowana przez jej odpowiednik binarny. W kodzie BCD każda cyfra dziesiętna jest reprezentowana przez cztery
-    bity binarne.</p>
-  <p>
-    1. Podziel kod BCD na grupy po 4 bity, zaczynając od najmniej znaczących bitów.<br>
-    2. Przekonwertuj każdą grupę 4-bitową na odpowiadającą jej cyfrę dziesiętną <br>
-    3. Połącz cyfry dziesiętne, aby uzyskać pełną liczbę dziesiętną <br>
-  </p>
-  <p>Przykład liczba dziesiętna 56:</p>
-  <p>
-    Cyfra dziesiątek: 5 (101 w formie binarnej) <br>
-    Cyfra jedności: 6 (110 w formie binarnej) <br>
-    Po uzupełnieniu do 4 bitów otrzymujemy: 0101 i 0110 <br>
-  </p>
-  <p>Wynik to: 0101 0110</p>
+  <p>Wiadomość przed zakodowaniem to: {{codingService.message}}</p>
+  <div *ngFor="let char of splitDescription(codingService.message,true); index as i">
+    <p>{{char}} = {{convertToDecimal(char)}} w systemie dwójkowym</p>
+  </div>
+  <p>Wiadomość po zakodowaniu: {{codingService.convert(codingService.message,codingService.combinationCoding)}}</p>
 </div>
 <div *ngIf="combiantion.fromEncoding == TypeOfCoding.number && combiantion.toEncoding == TypeOfCoding.sevenSegment"
   class="mx-5">
-  <ng-container *ngTemplateOutlet="sevenSegmentDisplay"></ng-container>
-  <p>
-    1.Przedstaw każdą cyfrę dziesiętną w postaci binarnej, z użyciem 4 bitów<br>
-    2. Dla każdej cyfry, przyporządkuj odpowiedni zestaw bitów dla segmentów, które muszą być zapalone, aby wyświetlić
-    tę cyfrę na wyświetlaczu 7-segmentowym<br>
-  </p>
-  <p>Na przykład, dla cyfry 0:</p>
-
-  <p>
-    Segmenty A, B, C, D, E, F są zapalone <br>
-    Segment G jest zgaszony <br>
-    Jako kod binarny, dla cyfry 0, to wyglądałoby tak: 1111110 <br>
-  </p>
+  <p>Wiadomość przed zakodowaniem to: {{codingService.message}}</p>
+  <p *ngIf="convertToNumber(codingService.message) <= 9; else other">
+    {{codingService.message}} = {{binaryCodingService.numberToSevenSegmentSingleChar(convertToNumber(codingService.message))}} 7 segment</p>
+  <ng-template #other>
+    <div *ngFor="let char of splitDescription(codingService.message); index as i">
+      <p>{{char}} = {{binaryCodingService.numberToSevenSegmentSingleChar(convertToNumber(char))}} 7 segment</p>
+    </div>
+  </ng-template>
+  <p>Wiadomość po zakodowaniu: {{codingService.convert(codingService.message,codingService.combinationCoding)}}</p>
 
 </div>
 <div *ngIf="combiantion.fromEncoding == TypeOfCoding.sevenSegment && combiantion.toEncoding == TypeOfCoding.number"
   class="mx-5">
-  class="mx-5">
-  <ng-container *ngTemplateOutlet="sevenSegmentDisplay"></ng-container>
-  <p>
-    1. Podziel kod 7-segmentowy na odpowiednie segmenty (A, B, C, D, E, F, G, a także punkt dziesiętny, jeśli jest
-    obecny)<br>
-    2. Porównaj wzorzec segmentów z zestawami segmentów dla znanych cyfr i znaków specjalnych<br>
-    3. Zidentyfikuj odpowiadające cyfry lub znaki na podstawie zestawu segmentów <br>
-  </p>
-  <p>Na przykład, dla kodu 7-segmentowego 1111110:</p>
-
-  <p>
-    Segmenty A, B, C, D, E, F są zapalone<br>
-    Segment G jest zgaszony <br>
-    To odpowiada cyfrze dziesiętnej 0
-  </p>
+  <p>Wiadomość przed zakodowaniem to: {{codingService.message}}</p>
+  <p *ngIf="convertToNumber(codingService.message) == 7; else other">{{binaryCodingService.numberToSevenSegmentSingleChar(convertToNumber(codingService.message))}}</p>
+  <ng-template #other>
+    <div *ngFor="let char of convertFrom7segmentToNumber(codingService.message); index as i">
+      <p>{{char}} = {{binaryCodingService.numberToSevenSegmentSingleChar(convertToNumber(char))}} 7 segment</p>
+    </div>
+  </ng-template>
+  <p>Wiadomość po zakodowaniu: {{codingService.convert(codingService.message,codingService.combinationCoding)}}</p>
 </div>
-
-<ng-template #sevenSegmentDisplay>
-  &nbsp;--A-- <br>
-  |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <br>
-  F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B <br>
-  |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <br>
-  &nbsp;--G-- <br>
-  |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <br>
-  E&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C <br>
-  |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <br>
-  &nbsp;--D--
-</ng-template>

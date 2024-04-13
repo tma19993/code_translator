@@ -66,13 +66,12 @@
     2. Przekonwertuj każdą grupę 4-bitową na odpowiadającą jej cyfrę dziesiętną <br>
     3. Połącz cyfry dziesiętne, aby uzyskać pełną liczbę dziesiętną <br>
   </p>
-  <p>Przykład liczba dziesiętna 56:</p>
+  <p>Przykład liczba dziesiętna 0101 0110:</p>
   <p>
-    Cyfra dziesiątek: 5 (101 w formie binarnej) <br>
-    Cyfra jedności: 6 (110 w formie binarnej) <br>
-    Po uzupełnieniu do 4 bitów otrzymujemy: 0101 i 0110 <br>
+    Pierwsza grupa (od prawej do lewej): 0110 (cyfra jedności: 6) <br>
+    Druga grupa: 0101 (cyfra dziesiątek: 5) <br>
   </p>
-  <p>Wynik to: 0101 0110</p>
+  <p>Wynik to: 56</p>
 </div>
 <div *ngIf="combiantion.fromEncoding == TypeOfCoding.number && combiantion.toEncoding == TypeOfCoding.sevenSegment"
   class="mx-5">
@@ -92,7 +91,6 @@
 
 </div>
 <div *ngIf="combiantion.fromEncoding == TypeOfCoding.sevenSegment && combiantion.toEncoding == TypeOfCoding.number"
-  class="mx-5">
   class="mx-5">
   <ng-container *ngTemplateOutlet="sevenSegmentDisplay"></ng-container>
   <p>
