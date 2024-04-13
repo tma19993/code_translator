@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { TranslateService } from "@ngx-translate/core";
 import { dropdownCodeList } from "src/app/constants";
 import { CodingService, DownloadFilesService } from "src/app/services";
 import { Combination, DropdownCodeListType } from "src/app/types";
@@ -22,7 +23,8 @@ export class EncodingMessagesComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private codingService: CodingService,
-    private downloadFilesService: DownloadFilesService
+    private downloadFilesService: DownloadFilesService,
+    private translate: TranslateService
   ) {}
 
   public ngOnInit(): void {
@@ -49,7 +51,9 @@ export class EncodingMessagesComponent implements OnInit {
       )
     );
     this.codingService.combinationCoding = conbination;
-    this.downloadFilesService.resultElement = this.resultElement;
+    this.downloadFilesService.resultElement = `${this.translate.instant("result.inputData")}: ${this.form.get("encodeMessage")?.value}, ${this.translate.instant("result.result")}: ${this.form.get("codedMessage")?.value}`;
+    // <p>{{"result.inputData" | translate | titlecase}}: {{}}</p>
+    // <p>{{"result.result" | translate | titlecase}}: {{form.get("codedMessage")?.value}}</p>
   }
 
   public switchMessages(): void {

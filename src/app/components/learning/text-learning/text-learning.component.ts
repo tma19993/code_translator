@@ -31,12 +31,12 @@ export class TextLearningComponent implements OnInit {
       this.combiantion.toEncoding == TypeOfCoding.ascii
     )
       this.generateAsciiTable();
-    else if (
+    if (
       this.combiantion.fromEncoding == TypeOfCoding.utf8 ||
       this.combiantion.toEncoding == TypeOfCoding.utf8
     )
       this.generateUtf8Table();
-    else if (
+    if (
       this.combiantion.fromEncoding == TypeOfCoding.iso8859 ||
       this.combiantion.toEncoding == TypeOfCoding.iso8859
     )

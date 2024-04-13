@@ -9,7 +9,7 @@ type generateAction = 'result' | 'stepByStep' | 'learning';
   providedIn: 'root',
 })
 export class DownloadFilesService {
-  public resultElement: ElementRef;
+  public resultElement: string;
   public learningElement: ElementRef;
   public stepByStepElement: ElementRef;
   constructor() {}
@@ -17,13 +17,10 @@ export class DownloadFilesService {
   public generatePDF(content: generateAction, fileName: string): void {
     let doc = new jsPDF('l', 'px', 'a4');
     if (content == GenerateAction.result) {
-      doc.html(this.resultElement.nativeElement, {
-        callback: () => {
-          doc.save(fileName);
-        },
-      });
+      doc.text(this.resultElement,30, 10);
+      doc.save(fileName);
     } else if (content == GenerateAction.learning) {
-      doc.html(this.learningElement.nativeElement, {
+      doc.html(this.learningElement.nativeElement, {width: 200,
         callback: () => {
           doc.save(fileName);
         },
