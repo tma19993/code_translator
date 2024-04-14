@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { TranslateService } from "@ngx-translate/core";
 import { dropdownCodeList } from "src/app/constants";
@@ -13,7 +13,6 @@ import { Combination, DropdownCodeListType } from "src/app/types";
 })
 export class EncodingMessagesComponent implements OnInit {
 
-  @ViewChild("result", { read: ElementRef , static:false  })public resultElement: ElementRef;
   public form: FormGroup = new FormGroup({});
   public canCopyEncodedMessage: boolean = false;
   protected readonly dropdownCodeList: any[] | undefined = dropdownCodeList;
@@ -51,9 +50,7 @@ export class EncodingMessagesComponent implements OnInit {
       )
     );
     this.codingService.combinationCoding = conbination;
-    this.downloadFilesService.resultElement = `${this.translate.instant("result.inputData")}: ${this.form.get("encodeMessage")?.value}, ${this.translate.instant("result.result")}: ${this.form.get("codedMessage")?.value}`;
-    // <p>{{"result.inputData" | translate | titlecase}}: {{}}</p>
-    // <p>{{"result.result" | translate | titlecase}}: {{form.get("codedMessage")?.value}}</p>
+    this.downloadFilesService.resultElement = `${this.translate.instant("result.inputData")}: ${this.form.get("encodeMessage")?.value}\n${this.translate.instant("result.result")}: ${this.form.get("codedMessage")?.value}`;
   }
 
   public switchMessages(): void {

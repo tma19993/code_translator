@@ -26,5 +26,20 @@
         "dropdownPlaceholder":"select type of code",
         "encodeTextareaPlaceholder":"enter the message to encode",
         "codeButton":"encode message"
+    },
+    "learnSection":{
+        "ascii":"Encoding and decoding messages in ASCII involves searching for data in an ASCII table. For example the word 'Rower'. \nWhen encoding the message, we look for the letters in the table, these will be R: 82, o: 111, w: 119, e: 101, r: 114. The ASCII form is 82,111,119,101,114. \n When decoding the message, we have the numbers 82,111,119,101,114. We are looking in the ASCII table on the decimal side R: 82, o: 111, w: 119, e: 101, r: 114. The word 'Rower' comes out.",
+        "utf8":"Encoding and decoding messages in UTF-8 involves searching for data in an UTF-8 table. For example the word 'Rower'. \nWhen encoding the message, we look for the letters in the table, these will be R: 82, o: 111, w: 119, e: 101, r: 114. The UTF-8 form is 82,111,119,101,114. \n When decoding the message, we have the numbers 82,111,119,101,114. We are looking in the UTF-8 table on the decimal side R: 82, o: 111, w: 119, e: 101, r: 114. The word 'Rower' comes out.",
+        "iso":"ISO-8859 encoding matches characters in the input text to their corresponding ISO-8859-1 character codes. \nFor example, the letter 'A' in UTF-8 is represented by a single byte with the value 65 (0x41 in the hexadecimal numeral system), which also corresponds to the letter 'A' in ISO-8859-1.\nThe conversion process involves looking through each character in input text and mapping it to the corresponding ISO-8859-1 character code.\nIf a character has no equivalent in ISO-8859-1, the so-called loss of information where the character will be replaced by the default character or a special replacement character.",
+        "asciiUtf8": "Encoding messages from ASCII to UTF-8 and decoding involves searching for messages in tables, but usually the messages may be the same because Utf-8 is an extension of the ASCII table with special characters",
+        "asciiIso": "Encoding messages from ASCII to ISO-8859 and decoding involves searching for messages in tables, but usually the messages may be the same because ISO-8859 is an extension of the ASCII table with special characters",
+        "isoUtf8": "Encoding Messages from ISO-8859 to UTF-8 and decoding involves searching for messages in tables, but usually the messages may be the same because Utf-8 is an extension of the ISO-8859 table with special characters",
+        "tableLabels":{
+            "tableAscii": "ASCII Table",
+            "tableUtf8": "UTF-8 Table",
+            "tableIso": "ISO-8859 Table",
+            "code":"code",
+            "char":"char"
+        }
     }
 }

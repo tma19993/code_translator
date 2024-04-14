@@ -26,5 +26,20 @@
         "dropdownPlaceholder":"wybierz rodzaj kodowania",
         "encodeTextareaPlaceholder":"wprowadz wiadomość do zakodowania",
         "codeButton":"zakoduj wiadomość"
+    },
+    "learnSection":{
+        "ascii":"Kodowanie jak i dekodowanie wiadomości w ASCII polega na wyszukiwaniu danych w tabeli ASCII. Na przykład słowo 'Rower'. \nPrzy kodowaniu wiadomości należy szukamy liter w tabeli będą to R: 82, o: 111, w: 119, e: 101, r: 114. Postać ASCII to 82,111,119,101,114. \n Przy dekodowaniu wiadomości mamy liczby 82,111,119,101,114. Szukamy w tabeli ASCII po stronie dziesiętnej R: 82, o: 111, w: 119, e: 101, r: 114. Wychodzi słowo 'Rower'",
+        "utf8":"Kodowanie jak i dekodowanie wiadomości w UTF-8 polega na wyszukiwaniu danych w tabeli UTF-8. Na przykład słowo 'Rower'. \nPrzy kodowaniu wiadomości należy szukamy liter w tabeli będą to R: 82, o: 111, w: 119, e: 101, r: 114. Postać UTF-8 to 82,111,119,101,114. \n Przy dekodowaniu wiadomości mamy liczby 82,111,119,101,114. Szukamy w tabeli UTF-8 po stronie dziesiętnej R: 82, o: 111, w: 119, e: 101, r: 114. Wychodzi słowo 'Rower'",
+        "iso": "Kodowanie ISO-8859  polega na dopasowaniu znaków w tekście wejściowym do odpowiadających im kodów znaków w ISO-8859-1. \nNa przykład litera 'A' w UTF-8 jest reprezentowana przez pojedynczy bajt o wartości 65 (0x41 w szesnastkowym systemie liczbowym), co odpowiada także literze 'A' w ISO-8859-1.\nProces konwersji polega na przejrzeniu każdego znaku w tekście wejściowym i zmapowaniu go na odpowiadający mu kod znaku w ISO-8859-1.\nJeśli jakiś znak nie ma odpowiednika w ISO-8859-1, może wystąpić zjawisko tzw. utraty informacji, gdzie znak zostanie zastąpiony przez domyślny znak lub specjalny znak zastępczy.",
+        "asciiUtf8": "Kodowanie Wiadomości z ASCII na UTF-8 jak i dekodowanie polega na szukaniu wiadomości w tablekach jednak zazwyczaj wiadomości mogą wyjść takie same dlatego że Utf-8 jest rozszerzeniem tabeli ASCII o znaki specjalne",
+        "asciiIso": "Kodowanie Wiadomości z ASCII na UTF-8 jak i dekodowanie polega na szukaniu wiadomości w tablekach jednak zazwyczaj wiadomości mogą wyjść takie same dlatego że Utf-8 jest rozszerzeniem tabeli ASCII o znaki specjalne",
+        "isoUtf8": "Kodowanie Wiadomości z ISO-8859 na UTF-8 jak i dekodowanie polega na szukaniu wiadomości w tablekach jednak zazwyczaj wiadomości mogą wyjść takie same dlatego że Utf-8 jest rozszerzeniem tabeli ISO-8859 o znaki specjalne",
+        "tableLabels":{
+            "tableAscii": "Tabela ASCII",
+            "tableUtf8": "Tabela UTF-8",
+            "tableIso": "Tabela ISO-8859",
+            "code":"kod",
+            "char":"znak"
+        }
     }
 }
