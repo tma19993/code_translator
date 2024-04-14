@@ -18,9 +18,6 @@ export class DownloadComponent {
         case 'result':
           this.downloadFilesService.generatePDF(GenerateAction.result, this.translate.instant("downloadSection.result"));
           break;
-        case 'stepByStep':
-          this.downloadFilesService.generatePDF(GenerateAction.stepByStep, this.translate.instant("downloadSection.stepByStep"));
-          break;
         case 'learning':
           this.downloadFilesService.generatePDF(GenerateAction.learning, this.translate.instant("downloadSection.learning"));
           break;

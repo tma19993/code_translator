@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { TranslateService } from "@ngx-translate/core";
-import { dropdownCodeList } from "src/app/constants";
+import { TypeOfCoding, dropdownCodeList } from "src/app/constants";
 import { CodingService, DownloadFilesService } from "src/app/services";
 import { Combination, DropdownCodeListType } from "src/app/types";
 
@@ -51,6 +51,7 @@ export class EncodingMessagesComponent implements OnInit {
     );
     this.codingService.combinationCoding = conbination;
     this.downloadFilesService.resultElement = `${this.translate.instant("result.inputData")}: ${this.form.get("encodeMessage")?.value}\n${this.translate.instant("result.result")}: ${this.form.get("codedMessage")?.value}`;
+    this.setLearningTranslation(this.codingService.combinationCoding);
   }
 
   public switchMessages(): void {
@@ -109,4 +110,44 @@ export class EncodingMessagesComponent implements OnInit {
       this.dropdownEncodeList?.find((item) => item.code == selectedEncode.code)
     );
   }
+
+  private setLearningTranslation(combination: Combination):void {
+    if((combination.fromEncoding == TypeOfCoding.ascii && combination.toEncoding == TypeOfCoding.text) || (combination.fromEncoding == TypeOfCoding.text && combination.toEncoding == TypeOfCoding.ascii)){
+      this.downloadFilesService.learningElement = this.translate.instant("learningSection.ascii");
+    }
+    if((combination.fromEncoding == TypeOfCoding.text && combination.toEncoding == TypeOfCoding.utf8) || (combination.fromEncoding == TypeOfCoding.utf8 && combination.toEncoding == TypeOfCoding.text)){
+      this.downloadFilesService.learningElement = this.translate.instant("learningSection.utf8");
+    }
+    if((combination.fromEncoding == TypeOfCoding.text && combination.toEncoding == TypeOfCoding.iso8859) || (combination.fromEncoding == TypeOfCoding.iso8859 && combination.toEncoding == TypeOfCoding.text)){
+      this.downloadFilesService.learningElement = this.translate.instant("learningSection.iso");
+    }
+    if((combination.fromEncoding == TypeOfCoding.ascii && combination.toEncoding == TypeOfCoding.utf8) || (combination.fromEncoding == TypeOfCoding.utf8 && combination.toEncoding == TypeOfCoding.ascii)){
+      this.downloadFilesService.learningElement = this.translate.instant("learningSection.asciiUtf8");
+    }
+    if((combination.fromEncoding == TypeOfCoding.ascii && combination.toEncoding == TypeOfCoding.iso8859) || (combination.fromEncoding == TypeOfCoding.iso8859 && combination.toEncoding == TypeOfCoding.ascii)){
+      this.downloadFilesService.learningElement = this.translate.instant("learningSection.asciiIso");
+    }
+    if((combination.fromEncoding == TypeOfCoding.utf8 && combination.toEncoding == TypeOfCoding.iso8859) || (combination.fromEncoding == TypeOfCoding.iso8859 && combination.toEncoding == TypeOfCoding.utf8)){
+      this.downloadFilesService.learningElement = this.translate.instant("learningSection.isoUtf8");
+    }
+    if(combination.fromEncoding == TypeOfCoding.binary && combination.toEncoding == TypeOfCoding.gray){
+      this.downloadFilesService.learningElement = this.translate.instant("learningSection.binaryGray");
+    }
+    if(combination.fromEncoding == TypeOfCoding.gray && combination.toEncoding == TypeOfCoding.binary){
+      this.downloadFilesService.learningElement = this.translate.instant("learningSection.grayBinary");
+    }
+    if(combination.fromEncoding == TypeOfCoding.number && combination.toEncoding == TypeOfCoding.bcd){
+      this.downloadFilesService.learningElement = this.translate.instant("learningSection.numberBCD");
+    }
+    if(combination.fromEncoding == TypeOfCoding.bcd && combination.toEncoding == TypeOfCoding.number){
+      this.downloadFilesService.learningElement = this.translate.instant("learningSection.BCDNumber");
+    }
+    if(combination.fromEncoding == TypeOfCoding.number && combination.toEncoding == TypeOfCoding.sevenSegment){
+      this.downloadFilesService.learningElement = this.translate.instant("learningSection.7segmentNumber");
+    }
+    if(combination.fromEncoding == TypeOfCoding.sevenSegment && combination.toEncoding == TypeOfCoding.number){
+      this.downloadFilesService.learningElement = this.translate.instant("learningSection.number7segment");
+    }
+  }
+
 }

@@ -47,7 +47,6 @@
         "beforeCoding":"The message before encoding is:",
         "singleLabel":"Search for the characters from the message in the table (it will highlight in blue)",
         "moreThanSingleLabel":"We are looking for the characters from the message in the table (characters to be encoded will be highlighted in blue, and those encoded in green)",
-        "afterCoding":"Message after encoding:"   
+        "afterCoding":"Message after encoding:"
     }
-    
 }

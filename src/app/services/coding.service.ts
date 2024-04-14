@@ -1,6 +1,9 @@
 import { Injectable } from "@angular/core";
 import { Combination } from "../types";
 import { TextCodingService, BinaryCodingService } from "./coding-services";
+import { DownloadFilesService } from "./download-files.service";
+import { TypeOfCoding } from "../constants";
+import { TranslateService } from "@ngx-translate/core";
 
 @Injectable({
   providedIn: "root",
