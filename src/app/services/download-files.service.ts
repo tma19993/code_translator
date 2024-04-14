@@ -8,8 +8,8 @@ type generateAction = 'result' | 'stepByStep' | 'learning';
 })
 export class DownloadFilesService {
   public resultElement: string;
-  public learningElement: ElementRef;
-  public stepByStepElement: ElementRef;
+  public learningElement: string;
+  public stepByStepElement: string;
   constructor() {}
 
   public generatePDF(content: generateAction, fileName: string): void {
@@ -17,19 +17,14 @@ export class DownloadFilesService {
     if (content == GenerateAction.result) {
       doc.text(this.resultElement,30, 30);
       doc.save(fileName);
-    } else if (content == GenerateAction.learning) {
-      doc.html(this.learningElement.nativeElement, {width: 2000,
-        callback: () => {
-          doc.save(fileName);
-        },
-      });
-      
-    } else {
-      doc.html(this.stepByStepElement.nativeElement, {
-        callback: () => {
-          doc.save(fileName);
-        },
-      });
+    } 
+    else if (content == GenerateAction.learning) {
+      doc.text(this.learningElement,30, 30);
+      doc.save(fileName); 
+    } 
+    else {
+      doc.text(this.stepByStepElement,30, 30);
+      doc.save(fileName); 
     }
   }
 }

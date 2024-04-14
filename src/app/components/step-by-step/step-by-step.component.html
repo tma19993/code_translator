@@ -1,5 +1,4 @@
-<section #stepByStepElement>
-    
+<section>
     <div *ngIf="combiantion.fromEncoding == TypeOfCoding.binary || combiantion.toEncoding == TypeOfCoding.binary || combiantion.fromEncoding ==  TypeOfCoding.number|| combiantion.toEncoding ==  TypeOfCoding.number; else other" class="mx-5">
         <app-binary-step-by-step></app-binary-step-by-step>
     </div>  

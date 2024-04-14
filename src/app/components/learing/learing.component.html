@@ -1,4 +1,4 @@
-<section #learningElement>
+<section>
   <div *ngIf="combiantion.fromEncoding == TypeOfCoding.binary || combiantion.toEncoding == TypeOfCoding.binary || combiantion.fromEncoding ==  TypeOfCoding.number|| combiantion.toEncoding ==  TypeOfCoding.number; else textTemplate">
     <app-binary-learning [combiantion]="combiantion"></app-binary-learning>
   </div>

@@ -1,9 +1,6 @@
 import {
-  AfterViewInit,
   Component,
-  ElementRef,
   OnInit,
-  ViewChild,
 } from '@angular/core';
 import { TypeOfCoding } from 'src/app/constants';
 import { CodingService, DownloadFilesService } from 'src/app/services';
@@ -14,11 +11,8 @@ import { Combination } from 'src/app/types';
   templateUrl: './learing.component.html',
   styleUrl: './learing.component.scss',
 })
-export class LearingComponent implements OnInit, AfterViewInit {
+export class LearingComponent implements OnInit{
   public combiantion: Combination;
-
-  @ViewChild('learningElement', { read: ElementRef, static: false })
-  public learningElement: ElementRef;
 
   protected readonly TypeOfCoding: any =  TypeOfCoding;
   constructor(
@@ -31,9 +25,4 @@ export class LearingComponent implements OnInit, AfterViewInit {
       this.combiantion = this.codingService.combinationCoding;
     }
   }
-
-  public ngAfterViewInit(): void {
-    this.downloadFilesService.learningElement = this.learningElement;
-  }
-
 }

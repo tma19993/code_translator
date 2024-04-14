@@ -8,22 +8,17 @@ import { Combination } from 'src/app/types';
   templateUrl: './step-by-step.component.html',
   styleUrl: './step-by-step.component.scss',
 })
-export class StepByStepComponent implements OnInit, AfterViewInit {
+export class StepByStepComponent implements OnInit {
   public combiantion: Combination;
-  @ViewChild('stepByStepElement', { read: ElementRef, static: false })
-  public stepByStepElement: ElementRef;
+
   protected readonly TypeOfCoding: any = TypeOfCoding;
   constructor (
-    public codingService: CodingService,
-    private downloadFilesService: DownloadFilesService
+    public codingService: CodingService
   ) {}
 
   public ngOnInit(): void {
     if (this.codingService.combinationCoding) {
       this.combiantion = this.codingService.combinationCoding;
     }
-  }
-  public ngAfterViewInit(): void {
-    this.downloadFilesService.stepByStepElement = this.stepByStepElement;
   }
 }
