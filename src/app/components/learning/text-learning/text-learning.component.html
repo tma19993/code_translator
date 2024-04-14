@@ -1,38 +1,38 @@
 <div *ngIf="(combiantion.fromEncoding == TypeOfCoding.ascii && combiantion.toEncoding == TypeOfCoding.text) || (combiantion.fromEncoding == TypeOfCoding.text && combiantion.toEncoding == TypeOfCoding.ascii)" class="mx-5">
-    <p>{{"learnSection.ascii" | translate}}</p>
+    <p>{{"learningSection.ascii" | translate}}</p>
      <ng-container *ngTemplateOutlet="tableASCII"></ng-container>
  </div>
  <div *ngIf="(combiantion.fromEncoding == TypeOfCoding.text && combiantion.toEncoding == TypeOfCoding.utf8) || (combiantion.fromEncoding == TypeOfCoding.utf8 && combiantion.toEncoding == TypeOfCoding.text)" class="mx-5">
-  <p>{{"learnSection.utf8" | translate}}</p>
+  <p>{{"learningSection.utf8" | translate}}</p>
     <ng-container *ngTemplateOutlet="tableUtf8"></ng-container>
  </div>
  <div *ngIf="(combiantion.fromEncoding == TypeOfCoding.text && combiantion.toEncoding == TypeOfCoding.iso8859) || (combiantion.fromEncoding == TypeOfCoding.iso8859 && combiantion.toEncoding == TypeOfCoding.text)" class="mx-5">
-  <p>{{"learnSection.iso" | translate}}</p>
+  <p>{{"learningSection.iso" | translate}}</p>
   <ng-container *ngTemplateOutlet="tableISO"></ng-container>
  </div>
  <div *ngIf="(combiantion.fromEncoding == TypeOfCoding.ascii && combiantion.toEncoding == TypeOfCoding.utf8) || (combiantion.fromEncoding == TypeOfCoding.utf8 && combiantion.toEncoding == TypeOfCoding.ascii)" class="mx-5">
-  <p>{{"learnSection.asciiUtf8" | translate}}</p>
+  <p>{{"learningSection.asciiUtf8" | translate}}</p>
     <ng-container *ngTemplateOutlet="tableASCII"></ng-container>
     <ng-container *ngTemplateOutlet="tableUtf8"></ng-container>
  </div>
  <div *ngIf="(combiantion.fromEncoding == TypeOfCoding.ascii && combiantion.toEncoding == TypeOfCoding.iso8859) || (combiantion.fromEncoding == TypeOfCoding.iso8859 && combiantion.toEncoding == TypeOfCoding.ascii)" class="mx-5">
-  <p>{{"learnSection.asciiIso" | translate}}</p>
+  <p>{{"learningSection.asciiIso" | translate}}</p>
   <ng-container *ngTemplateOutlet="tableASCII"></ng-container>
   <ng-container *ngTemplateOutlet="tableISO"></ng-container>
  </div>
  <div *ngIf="(combiantion.fromEncoding == TypeOfCoding.utf8 && combiantion.toEncoding == TypeOfCoding.iso8859) || (combiantion.fromEncoding == TypeOfCoding.iso8859 && combiantion.toEncoding == TypeOfCoding.utf8)" class="mx-5">
-  <p>{{"learnSection.isoUtf8" | translate}}</p>
+  <p>{{"learningSection.isoUtf8" | translate}}</p>
     <ng-container *ngTemplateOutlet="tableISO"></ng-container>
   <ng-container *ngTemplateOutlet="tableUtf8"></ng-container>
  </div>
 
  <ng-template #tableUtf8>
-  <p class="text-center">{{"learnSection.tableLabels.tableUtf8" | translate}}</p>
+  <p class="text-center">{{"learningSection.tableLabels.tableUtf8" | translate}}</p>
   <div class="my-5" style="overflow-x: auto;">
       <table class="d-flex" style="max-height: 300px;">
         <tr>
-          <td style="min-width: 50px;">{{"learnSection.tableLabels.code" | translate}}</td>
-        <td style="min-width: 50px;">{{"learnSection.tableLabels.char" | translate}}</td>
+          <td style="min-width: 50px;">{{"learningSection.tableLabels.code" | translate}}</td>
+        <td style="min-width: 50px;">{{"learningSection.tableLabels.char" | translate}}</td>
         </tr>
         <tr  *ngFor="let char of utf8Table" style="min-width: 60px;">
           <td>{{char.codePoint}}: </td>
@@ -42,12 +42,12 @@
     </div>
 </ng-template>
 <ng-template #tableISO>
-  <p class="text-center">{{"learnSection.tableLabels.tableIso" | translate}}</p>
+  <p class="text-center">{{"learningSection.tableLabels.tableIso" | translate}}</p>
   <div class="my-5" style="overflow-x: auto;">
     <table class="d-flex" style="max-height: 300px;">
       <tr>
-        <td style="min-width: 50px;">{{"learnSection.tableLabels.code" | translate}}</td>
-        <td style="min-width: 50px;">{{"learnSection.tableLabels.char" | translate}}</td>
+        <td style="min-width: 50px;">{{"learningSection.tableLabels.code" | translate}}</td>
+        <td style="min-width: 50px;">{{"learningSection.tableLabels.char" | translate}}</td>
       </tr>
       <tr *ngFor="let char of isoCodes" style="min-width: 60px;">
           <td>{{char.codePoint}}: </td>
@@ -57,12 +57,12 @@
     </div>
 </ng-template>
 <ng-template #tableASCII>
-  <p class="text-center">{{"learnSection.tableLabels.tableAscii" | translate}}</p>
+  <p class="text-center">{{"learningSection.tableLabels.tableAscii" | translate}}</p>
   <div class="my-5" style="overflow-x: auto;">
     <table class="d-flex" style="max-height: 300px;">
       <tr>
-        <td style="min-width: 50px;">{{"learnSection.tableLabels.code" | translate}}</td>
-        <td style="min-width: 50px;">{{"learnSection.tableLabels.char" | translate}}</td>
+        <td style="min-width: 50px;">{{"learningSection.tableLabels.code" | translate}}</td>
+        <td style="min-width: 50px;">{{"learningSection.tableLabels.char" | translate}}</td>
       </tr>
       <tr  *ngFor="let char of asciiTable" style="min-width: 60px;">
           <td>{{char.codePoint}}: </td>

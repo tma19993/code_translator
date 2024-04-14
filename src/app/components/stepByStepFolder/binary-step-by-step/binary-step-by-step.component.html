@@ -1,42 +1,42 @@
 <div *ngIf="combiantion.fromEncoding == TypeOfCoding.binary && combiantion.toEncoding == TypeOfCoding.gray"
   class="mx-5">
-  <p>Wiadomość przed zakodowaniem to: {{codingService.message}}</p>
+  <p>{{"stepByStepSection.beforeCoding" | translate}} {{codingService.message}}</p>
   <div *ngFor="let char of splitDescription(codingService.message); index as i">
     <p *ngIf="i === 0; else other">{{i}}. {{char}}</p>
     <ng-template #other>
       <p>{{i}}. {{char}} XOR  {{splitDescription(codingService.message)[i-1]}} = {{ binaryCodingService.binaryToGraySingleChar(char, splitDescription(codingService.message)[i-1])}}</p>
     </ng-template>
   </div>
-  <p>Wiadomość po zakodowaniu: {{codingService.convert(codingService.message,codingService.combinationCoding)}}</p>
+  <p>{{"stepByStepSection.afterCoding" | translate}} {{codingService.convert(codingService.message,codingService.combinationCoding)}}</p>
 </div>
 <div *ngIf="combiantion.fromEncoding == TypeOfCoding.gray && combiantion.toEncoding == TypeOfCoding.binary"
   class="mx-5">
-  <p>Wiadomość przed zakodowaniem to: {{codingService.message}}</p>
+  <p>{{"stepByStepSection.beforeCoding" | translate}} {{codingService.message}}</p>
   <div *ngFor="let char of splitDescription(codingService.message); index as i">
     <p *ngIf="i === 0; else other">{{i}}. {{char}}</p>
     <ng-template #other>
       <p>{{i}}. {{char}} XOR  {{codingService.convert(codingService.message,codingService.combinationCoding)[i-1]}} = {{ binaryCodingService.grayToBinarySingleChar(char,codingService.convert(codingService.message,codingService.combinationCoding)[i-1])}}</p>
   </ng-template>
   </div>
-  <p>Wiadomość po zakodowaniu: {{codingService.convert(codingService.message,codingService.combinationCoding)}}</p>
+  <p>{{"stepByStepSection.afterCoding" | translate}} {{codingService.convert(codingService.message,codingService.combinationCoding)}}</p>
 </div>
 <div *ngIf="combiantion.fromEncoding == TypeOfCoding.number && combiantion.toEncoding == TypeOfCoding.bcd" class="mx-5">
-  <p>Wiadomość przed zakodowaniem to: {{codingService.message}}</p>
+  <p>{{"stepByStepSection.beforeCoding" | translate}} {{codingService.message}}</p>
   <div *ngFor="let char of splitDescription(codingService.message); index as i">
-    <p>{{char}} = {{convertToBinary(char)}} w systemie dwójkowym</p>
+    <p>{{char}} = {{convertToBinary(char)}}</p>
   </div>
-  <p>Wiadomość po zakodowaniu: {{codingService.convert(codingService.message,codingService.combinationCoding)}}</p>
+  <p>{{"stepByStepSection.afterCoding" | translate}} {{codingService.convert(codingService.message,codingService.combinationCoding)}}</p>
 </div>
 <div *ngIf="combiantion.fromEncoding == TypeOfCoding.bcd && combiantion.toEncoding == TypeOfCoding.number" class="mx-5">
-  <p>Wiadomość przed zakodowaniem to: {{codingService.message}}</p>
+  <p>{{"stepByStepSection.beforeCoding" | translate}} {{codingService.message}}</p>
   <div *ngFor="let char of splitDescription(codingService.message,true); index as i">
-    <p>{{char}} = {{convertToDecimal(char)}} w systemie dwójkowym</p>
+    <p>{{char}} = {{convertToDecimal(char)}}</p>
   </div>
-  <p>Wiadomość po zakodowaniu: {{codingService.convert(codingService.message,codingService.combinationCoding)}}</p>
+  <p>{{"stepByStepSection.afterCoding" | translate}} {{codingService.convert(codingService.message,codingService.combinationCoding)}}</p>
 </div>
 <div *ngIf="combiantion.fromEncoding == TypeOfCoding.number && combiantion.toEncoding == TypeOfCoding.sevenSegment"
   class="mx-5">
-  <p>Wiadomość przed zakodowaniem to: {{codingService.message}}</p>
+  <p>{{"stepByStepSection.beforeCoding" | translate}} {{codingService.message}}</p>
   <p *ngIf="convertToNumber(codingService.message) <= 9; else other">
     {{codingService.message}} = {{binaryCodingService.numberToSevenSegmentSingleChar(convertToNumber(codingService.message))}} 7 segment</p>
   <ng-template #other>
@@ -44,17 +44,17 @@
       <p>{{char}} = {{binaryCodingService.numberToSevenSegmentSingleChar(convertToNumber(char))}} 7 segment</p>
     </div>
   </ng-template>
-  <p>Wiadomość po zakodowaniu: {{codingService.convert(codingService.message,codingService.combinationCoding)}}</p>
+  <p>{{"stepByStepSection.afterCoding" | translate}} {{codingService.convert(codingService.message,codingService.combinationCoding)}}</p>
 
 </div>
 <div *ngIf="combiantion.fromEncoding == TypeOfCoding.sevenSegment && combiantion.toEncoding == TypeOfCoding.number"
   class="mx-5">
-  <p>Wiadomość przed zakodowaniem to: {{codingService.message}}</p>
-  <p *ngIf="convertToNumber(codingService.message) == 7; else other">{{binaryCodingService.numberToSevenSegmentSingleChar(convertToNumber(codingService.message))}}</p>
+  <p>{{"stepByStepSection.beforeCoding" | translate}} {{codingService.message}}</p>
+  <p *ngIf="convertToNumber(codingService.message) == 7; else other">{{binaryCodingService.numberToSevenSegmentSingleChar(convertToNumber(codingService.message))}} 7 segment</p>
   <ng-template #other>
     <div *ngFor="let char of convertFrom7segmentToNumber(codingService.message); index as i">
       <p>{{char}} = {{binaryCodingService.numberToSevenSegmentSingleChar(convertToNumber(char))}} 7 segment</p>
     </div>
   </ng-template>
-  <p>Wiadomość po zakodowaniu: {{codingService.convert(codingService.message,codingService.combinationCoding)}}</p>
+  <p>{{"stepByStepSection.afterCoding" | translate}} {{codingService.convert(codingService.message,codingService.combinationCoding)}}</p>
 </div>

@@ -11,12 +11,6 @@
         "inputData":"Dane wejściowe",
         "result":"Wynik konwersji"
     },
-    "learningSection":{
-
-    },
-    "stepByStepSection":{
-
-    },
     "downloadSection":{
         "result":"wynik",
         "learning": "nauka",
@@ -27,7 +21,7 @@
         "encodeTextareaPlaceholder":"wprowadz wiadomość do zakodowania",
         "codeButton":"zakoduj wiadomość"
     },
-    "learnSection":{
+    "learningSection":{
         "ascii":"Kodowanie jak i dekodowanie wiadomości w ASCII polega na wyszukiwaniu danych w tabeli ASCII. Na przykład słowo 'Rower'. \nPrzy kodowaniu wiadomości należy szukamy liter w tabeli będą to R: 82, o: 111, w: 119, e: 101, r: 114. Postać ASCII to 82,111,119,101,114. \n Przy dekodowaniu wiadomości mamy liczby 82,111,119,101,114. Szukamy w tabeli ASCII po stronie dziesiętnej R: 82, o: 111, w: 119, e: 101, r: 114. Wychodzi słowo 'Rower'",
         "utf8":"Kodowanie jak i dekodowanie wiadomości w UTF-8 polega na wyszukiwaniu danych w tabeli UTF-8. Na przykład słowo 'Rower'. \nPrzy kodowaniu wiadomości należy szukamy liter w tabeli będą to R: 82, o: 111, w: 119, e: 101, r: 114. Postać UTF-8 to 82,111,119,101,114. \n Przy dekodowaniu wiadomości mamy liczby 82,111,119,101,114. Szukamy w tabeli UTF-8 po stronie dziesiętnej R: 82, o: 111, w: 119, e: 101, r: 114. Wychodzi słowo 'Rower'",
         "iso": "Kodowanie ISO-8859  polega na dopasowaniu znaków w tekście wejściowym do odpowiadających im kodów znaków w ISO-8859-1. \nNa przykład litera 'A' w UTF-8 jest reprezentowana przez pojedynczy bajt o wartości 65 (0x41 w szesnastkowym systemie liczbowym), co odpowiada także literze 'A' w ISO-8859-1.\nProces konwersji polega na przejrzeniu każdego znaku w tekście wejściowym i zmapowaniu go na odpowiadający mu kod znaku w ISO-8859-1.\nJeśli jakiś znak nie ma odpowiednika w ISO-8859-1, może wystąpić zjawisko tzw. utraty informacji, gdzie znak zostanie zastąpiony przez domyślny znak lub specjalny znak zastępczy.",
@@ -40,6 +34,18 @@
             "tableIso": "Tabela ISO-8859",
             "code":"kod",
             "char":"znak"
-        }
+        },
+        "binaryGray":"Konwersja kodu binarnego na kod graya polega na użyciu funkcji XOR czyli różnicy symetrycznej do zakodowania wiadomości. Oto kroki kodowania z kodu binarnego na kod graya:\n 1. Rozpocznij od najbardziej znaczącego bitu (MSB czyli pierwszy od lewej) \n2. Zachowaj pierwszy bit (MSB czyli pierwszy od lewej) kodu binarnego jako pierwszy bit kodu Graya \n 3. Następnie wykonaj operację XOR między każdym kolejnym bitem kodu binarnego, a poprzednim bitem kodu binarnego, aby uzyskać bity kodu Graya \n4. Powtarzaj ten proces dla każdego bitu kodu binarnego, aby uzyskać cały kod Graya \n \nPrzykład kod binarny 1010\n\n1. Pierwszy bit (MSB) pozostaje taki sam: 1 \n2. XOR drugiego bitu z pierwszym: 1 XOR 0 = 1 \n3. XOR trzeciego bitu z drugim: 0 XOR 1 = 1 \n 4. XOR czwartego bitu z trzecim: 1 XOR 0 = 1 \n\nWynik to kod Graya: 1111",
+        "grayBinary": "Dekodowanie kodu binarnego z kod graya polega na odtworzeniu każdego bitu tekstu binarnego poprzez wykonanie operacji XOR między odpowiadającym mu bitem kodu Graya, a poprzednim bitem tekstu binarnego. Oto kroki dekodowania z kodu binarnego z kodu graya: 1. Rozpocznij od najbardziej znaczącego bitu (MSB czyli pierwszy od lewej) \n 2. Pierwszy bit (MSB czyli pierwszy od lewej) tekstu binarnego jest taki sam jak pierwszy bit kodu Graya \n 3. Każdy kolejny bit tekstu binarnego jest wynikiem operacji XOR między odpowiadającym mu bitem kodu Graya, a poprzednim bitem tekstu binarnego \n 4. Powtarzaj ten proces dla każdego bitu kodu Graya, aby uzyskać cały tekst binarny \n  \n Przykład kod Graya 1111\n\n 1. Pierwszy bit (MSB) pozostaje taki sam: 1 \n 2. XOR drugiego bitu z pierwszym (MSB kodu Graya) i pierwszym bitem tekstu binarnego (pierwszym bitem tekstu     binarnego): 1 XOR 1 = 0 \n 3. XOR trzeciego bitu z drugim bitem kodu Graya i drugim bitem tekstu binarnego: 1 XOR 0 = 1. \n 4. XOR czwartego bitu z trzecim bitem kodu Graya i trzecim bitem tekstu binarnego: 1 XOR 1 = 0 \n  \nWynik to kod binarny: 1000",
+        "numberBCD": "  Kod BCD (Binary-Coded Decimal) to sposób reprezentacji liczb w postaci binarnej, gdzie każda cyfra dziesiętna jest reprezentowana przez jej odpowiednik binarny. W kodzie BCD każda cyfra dziesiętna jest reprezentowana przez cztery bity binarne.\n 1. Podziel liczbę dziesiętną na cyfry dziesiętne\n 2. Przedstaw każdą cyfrę dziesiętną w formie binarnej \n 3. Uzupełnij każdy binarny zapis cyfry dziesiętnej do 4 bitów (możliwe jest użycie wiodących zer) \n   \n Przykład liczba dziesiętna 56:\n Cyfra dziesiątek: 5 (101 w formie binarnej) \nCyfra jedności: 6 (110 w formie binarnej) \n Po uzupełnieniu do 4 bitów otrzymujemy: 0101 i 0110 \n   \nWynik to: 0101 0110",
+        "BCDNumber": "Kod BCD (Binary-Coded Decimal) to sposób reprezentacji liczb w postaci binarnej, gdzie każda cyfra dziesiętna jest reprezentowana przez jej odpowiednik binarny. W kodzie BCD każda cyfra dziesiętna jest reprezentowana przez cztery bity binarne.\n 1. Podziel kod BCD na grupy po 4 bity, zaczynając od najmniej znaczących bitów.\n 2. Przekonwertuj każdą grupę 4-bitową na odpowiadającą jej cyfrę dziesiętną \n 3. Połącz cyfry dziesiętne, aby uzyskać pełną liczbę dziesiętną \n   \n Przykład liczba dziesiętna 0101 0110:\n Pierwsza grupa (od prawej do lewej): 0110 (cyfra jedności: 6) \n Druga grupa: 0101 (cyfra dziesiątek: 5) \n   \nWynik to: 56\n",
+        "7segmentNumber": "1.Przedstaw każdą cyfrę dziesiętną w postaci binarnej, z użyciem 4 bitów\n 2. Dla każdej cyfry, przyporządkuj odpowiedni zestaw bitów dla segmentów, które muszą być zapalone, aby wyświetlić tę cyfrę na wyświetlaczu 7-segmentowym\n  \nNa przykład, dla cyfry 0:\nSegmenty A, B, C, D, E, F są zapalone \n Segment G jest zgaszony \n Jako kod binarny, dla cyfry 0, to wyglądałoby tak: 1111110",
+        "number7segment": "1. Podziel kod 7-segmentowy na odpowiednie segmenty (A, B, C, D, E, F, G, a także punkt dziesiętny, jeśli jest obecny)\n2. Porównaj wzorzec segmentów z zestawami segmentów dla znanych cyfr i znaków specjalnych\n 3. Zidentyfikuj odpowiadające cyfry lub znaki na podstawie zestawu segmentów \n  \n Na przykład, dla kodu 7-segmentowego 1111110:\n Segmenty A, B, C, D, E, F są zapalone\nSegment G jest zgaszony \nTo odpowiada cyfrze dziesiętnej 0"
+    },
+    "stepByStepSection":{
+        "beforeCoding":"wiadomość przed zakodowaniem to:",
+        "singleLabel":"Szukamy w znaków z wiadomości w tabeli (podświetli się na niebiesko)",
+        "moreThanSingleLabel":"Szukamy w znaków z wiadomości w tabeli (znaki do zakodowania podświetlą się na niebiesko a zakodowana na zielono)",
+        "afterCoding":"Wiadomość po zakodowaniu:"   
     }
 }

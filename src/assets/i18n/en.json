@@ -11,12 +11,6 @@
         "inputData":"input data",
         "result":"conversion result"
     },
-    "learningSection":{
-        
-    },
-    "stepByStepSection":{
-
-    },
     "downloadSection":{
         "result":"Result",
         "learning": "Learning",
@@ -27,7 +21,7 @@
         "encodeTextareaPlaceholder":"enter the message to encode",
         "codeButton":"encode message"
     },
-    "learnSection":{
+    "learningSection":{
         "ascii":"Encoding and decoding messages in ASCII involves searching for data in an ASCII table. For example the word 'Rower'. \nWhen encoding the message, we look for the letters in the table, these will be R: 82, o: 111, w: 119, e: 101, r: 114. The ASCII form is 82,111,119,101,114. \n When decoding the message, we have the numbers 82,111,119,101,114. We are looking in the ASCII table on the decimal side R: 82, o: 111, w: 119, e: 101, r: 114. The word 'Rower' comes out.",
         "utf8":"Encoding and decoding messages in UTF-8 involves searching for data in an UTF-8 table. For example the word 'Rower'. \nWhen encoding the message, we look for the letters in the table, these will be R: 82, o: 111, w: 119, e: 101, r: 114. The UTF-8 form is 82,111,119,101,114. \n When decoding the message, we have the numbers 82,111,119,101,114. We are looking in the UTF-8 table on the decimal side R: 82, o: 111, w: 119, e: 101, r: 114. The word 'Rower' comes out.",
         "iso":"ISO-8859 encoding matches characters in the input text to their corresponding ISO-8859-1 character codes. \nFor example, the letter 'A' in UTF-8 is represented by a single byte with the value 65 (0x41 in the hexadecimal numeral system), which also corresponds to the letter 'A' in ISO-8859-1.\nThe conversion process involves looking through each character in input text and mapping it to the corresponding ISO-8859-1 character code.\nIf a character has no equivalent in ISO-8859-1, the so-called loss of information where the character will be replaced by the default character or a special replacement character.",
@@ -40,6 +34,20 @@
             "tableIso": "ISO-8859 Table",
             "code":"code",
             "char":"char"
-        }
+        },
+        "binaryGray":"Converting binary code to Gray code involves using the XOR function, or symmetric difference, to encode the message. Here are the steps for encoding from binary code to Gray code:\n 1. Start with the most characteristic bit (MSB, i.e. the first bit from the left)\n2. Keep the first bit (MSB, i.e. first from the left) of the binary code as the first bit of the Gray code \n 3. XOR between the next bit of the binary code and then apply the bit of the binary code to get the Gray code bits \n4. Repeat ten processes for each bit of the binary code to obtain the entire Gray code\n\nExample binary code 1010\n\n1. The first bit (MSB) remains the same: 1 \n2. XOR the second bit from the first: 1 XOR 0 = 1 \n3. XOR the next bit from the second: 0 XOR 1 = 1 \n 4. XOR the fourth bit from the last: 1 XOR 0 = 1 \n\nResult to Gray code: 1111",
+        "grayBinary": "Decoding binary code from Gray code involves restoring each bit of binary text by performing an XOR operation between the corresponding bit of Gray code and the previous bit of binary text. Here are the steps to decode binary from Gray code: 1. Start with the most significant bit (MSB or left first) \n 2. The first bit (MSB or left first) of the binary text is the same as the first bit of Gray code \n 3 . Each subsequent bit of binary text is the result of an XOR operation between the corresponding bit of Gray code and the previous bit of binary text \n 4. Repeat this process for each bit of Gray code to obtain all binary text \n \n Example Gray code 1111\n \n 1. The first bit (MSB) remains the same: 1 \n 2. XOR the second bit with the first (Gray code MSB) and the first bit of binary text (first bit of binary text): 1 XOR 1 = 0 \n 3. XOR the third bit with the second bit of Gray code and the second bit of binary text: 1 XOR 0 = 1. \n 4. XOR the fourth bit with the third bit of Gray code and the third bit of binary text: 1 XOR 1 = 0 \n \nThe result is binary code: 1000",
+        "numberBCD": "BCD (Binary-Coded Decimal) code is a way of representing numbers in binary form, where each decimal digit is represented by its binary equivalent. In BCD, each decimal digit is represented by four binary bits.\n 1. Divide the decimal number into decimal digits\n 2. Represent each decimal digit in binary form\n 3. Complement each binary decimal digit to 4 bits (it is possible using leading zeros) \n \n Example decimal number 56:\n Tens digit: 5 (101 in binary form) \nOnes digit: 6 (110 in binary form) \n After 4-bit complement we get: 0101 and 0110 \n \nThe result is: 0101 0110",
+        "BCDNumber": "BCD (Binary-Coded Decimal) code is a way of representing numbers in binary form, where each decimal digit is represented by its binary equivalent. In BCD, each decimal digit is represented by four binary bits.\n 1. Divide the BCD code into groups of 4 bits, starting with the least significant bits.\n 2. Convert each 4-bit group to its corresponding decimal digit\n 3 .Combine the decimal digits to make a complete decimal number\n\n Example decimal number 0101 0110:\n First group (right to left): 0110 (units digit: 6) \n Second group: 0101 (tens digit: 5) \n \nThe result is: 56\n",
+        "7segmentNumber": "1. Represent each decimal digit in binary form, using 4 bits\n 2. For each digit, assign the appropriate set of bits for the segments that must be lit to display that digit on a 7-segment display\n \nFor example, for digits 0:\nSegments A, B, C, D, E, F are on\n Segment G is off\n As a binary code, for the digit 0, it would look like this: 1111110",
+        "number7segment": "1. Split the 7-segment code into appropriate segments (A, B, C, D, E, F, G, and decimal point if present)\n2. Compare the segment pattern to the segment sets for known digits and special characters\n 3. Identify the corresponding digits or characters from the segment set\n\n For example, for a 7-segment code 1111110:\n Segments A, B, C, D, E, F are on\nSegment G is off\nThis corresponds to the decimal digit 0"
+
+    },
+    "stepByStepSection":{
+        "beforeCoding":"The message before encoding is:",
+        "singleLabel":"Search for the characters from the message in the table (it will highlight in blue)",
+        "moreThanSingleLabel":"We are looking for the characters from the message in the table (characters to be encoded will be highlighted in blue, and those encoded in green)",
+        "afterCoding":"Message after encoding:"   
     }
+    
 }
