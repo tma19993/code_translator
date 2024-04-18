@@ -80,32 +80,32 @@ export class TextStepByStepComponent implements OnInit {
 
     if ( this.combiantion.toEncoding == TypeOfCoding.ascii) {
       this.asciiTable.forEach((el, index) => {
-        if (message.includes(el.character)) indexes.push(index);
+        if (el.character.includes(message)) indexes.push(index);
       });
     }
     else if (this.combiantion.fromEncoding == TypeOfCoding.ascii){
       this.asciiTable.forEach((el, index) => {
-        if (message.includes(el.codePoint.toString())) indexes.push(index);
+        if (el.codePoint.toString().includes(message)) indexes.push(index);
       });
     }
     if ( this.combiantion.toEncoding == TypeOfCoding.utf8) {
       this.utf8Table.forEach((el, index) => {
-        if (message.includes(el.character)) indexes.push(index);
+        if (el.character.includes(message)) indexes.push(index);
       });
     }
     else if (this.combiantion.fromEncoding == TypeOfCoding.utf8){
       this.utf8Table.forEach((el, index) => {
-        if (message.includes(el.codePoint.toString())) indexes.push(index);
+        if (el.codePoint.toString().includes(message)) indexes.push(index);
       });
     }
     if ( this.combiantion.toEncoding == TypeOfCoding.iso8859) {
       this.isoCodes.forEach((el, index) => {
-        if (message.includes(el.character)) indexes.push(index);
+        if (el.character.includes(message)) indexes.push(index);
       });
     }
     else if (this.combiantion.fromEncoding == TypeOfCoding.iso8859){
       this.isoCodes.forEach((el, index) => {
-        if (message.includes(el.codePoint.toString())) indexes.push(index);
+        if (el.codePoint.toString().includes(message)) indexes.push(index);
       });
     }
      

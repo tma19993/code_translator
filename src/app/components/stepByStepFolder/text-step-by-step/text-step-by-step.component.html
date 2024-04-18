@@ -67,7 +67,7 @@
           <td style="min-width: 50px;">{{"learningSection.tableLabels.char" | translate}}</td>
         </tr>
         <tr  *ngFor="let char of asciiTable; let i = index" style="min-width: 60px;" 
-        [ngClass]="{ 'finded-encode-value': findEncodeCharacter(i) , 'finded-coded-value': findCodedCharacter(i) && !(this.combiantion.fromEncoding ==TypeOfCoding.text  || this.combiantion.toEncoding ==TypeOfCoding.text)  && !firstTable}">
+        [ngClass]="{ 'finded-encode-value': findEncodeCharacter(i) , 'finded-coded-value': findCodedCharacter(i) && !(this.combiantion.fromEncoding ==TypeOfCoding.text  || this.combiantion.toEncoding == TypeOfCoding.text)  && !firstTable}">
             <td>{{char.codePoint}}: </td>
             <td>{{char.character}}</td>
         </tr>
