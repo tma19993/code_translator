@@ -3,7 +3,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { TypeOfCoding } from 'src/app/constants';
-import { CodingService, DownloadFilesService } from 'src/app/services';
+import { CodingService } from 'src/app/services';
 import { Combination } from 'src/app/types';
 
 @Component({
@@ -16,8 +16,7 @@ export class LearingComponent implements OnInit{
 
   protected readonly TypeOfCoding: any =  TypeOfCoding;
   constructor(
-    private codingService: CodingService,
-    private downloadFilesService: DownloadFilesService
+    private codingService: CodingService
   ) {}
 
   public ngOnInit(): void {
