@@ -23,6 +23,5 @@ export class TranslationComponent implements OnInit {
   public changeLanguage(): void {
     this.curretLanguage = this.availableLanguages.filter(el => el != this.curretLanguage ?  el: null)[0];
     this.translate.use(this.curretLanguage);
-    // location.reload();
   }
 }

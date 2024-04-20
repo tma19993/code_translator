@@ -14,6 +14,6 @@
         name="learning"></p-checkbox>
     </div>
   <div class="w-100 d-flex justify-content-center">
-    <p-button class="text-center" [label]="'menuButtons.download' | translate | uppercase" (onClick)="submit()"></p-button>
+    <p-button class="text-center" [disabled]="selectedValues.length == 0" [label]="'menuButtons.download' | translate | uppercase" (onClick)="submit()"></p-button>
   </div>
    </div>
