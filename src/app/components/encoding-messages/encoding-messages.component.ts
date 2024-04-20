@@ -16,6 +16,7 @@ export class EncodingMessagesComponent implements OnInit {
 
   public form: FormGroup = new FormGroup({});
   public canCopyEncodedMessage: boolean = false;
+  public sevenSegmentNumber: string;
   protected readonly dropdownCodeList: any[] | undefined = dropdownCodeList;
   public dropdownEncodeList: any[] | undefined = [];
   public submit: boolean = false;
@@ -51,6 +52,8 @@ export class EncodingMessagesComponent implements OnInit {
         conbination
       )
     );
+    if(conbination.toEncoding == TypeOfCoding.sevenSegment) this.sevenSegmentNumber = this.form.controls["codedMessage"].value;
+    console.log( this.sevenSegmentNumber);
     this.codingService.combinationCoding = conbination;
     this.downloadFilesService.resultElement = `${this.translate.instant("result.inputData")}: ${this.form.get("encodeMessage")?.value}\n${this.translate.instant("result.result")}: ${this.form.get("codedMessage")?.value}`;
     this.setLearningTranslation(this.codingService.combinationCoding);
@@ -116,7 +119,6 @@ export class EncodingMessagesComponent implements OnInit {
   private valueChanges(): void {
     this.form.get("selectedEncode")?.valueChanges.subscribe(value => {
       const selectedEncodeControl = this.form.get("encodeMessage");
-      console.log(this.form);
       if (value.code === TypeOfCoding.binary || value.code === TypeOfCoding.gray) {
         selectedEncodeControl?.setValidators(encodeMessageValidator(TypeOfCoding.binary));
       } else if (value.code === TypeOfCoding.number || value.code === TypeOfCoding.ascii || value.code === TypeOfCoding.iso8859 || value.code === TypeOfCoding.utf8) {

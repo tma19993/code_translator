@@ -29,12 +29,15 @@
         [options]="dropdownEncodeList" 
         [showClear]="true" 
         [placeholder]="'encodingMessagesSection.dropdownPlaceholder' | translate | titlecase"></p-dropdown>
-      <textarea pInputTextarea
+      <div class="d-flex gap-5 align-items-start">
+        <textarea pInputTextarea
         formControlName="codedMessage"
         rows="10" 
-        cols="80" 
+        [cols]="form.get('selectedCoded')?.value?.code == '7segment' ? 40:80" 
         [readonly]="true" 
         [autoResize]="true" ></textarea>
+        <app-seven-segment-display *ngIf="form.get('selectedCoded')?.value?.code == '7segment'" [inputNumber]="sevenSegmentNumber"></app-seven-segment-display>
+      </div>
     </div>
   </section>
   <div class="submit mt-5">
