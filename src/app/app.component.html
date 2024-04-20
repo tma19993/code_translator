@@ -1,6 +1,7 @@
 <section class="app-container">
+   <main>
     <div class="header py-4">
-        <h1>{{'headerText' | translate | titlecase}}</h1>
+        <h1>{{'headerText' | translate}}</h1>
     </div>
     <app-translation></app-translation>
     <section class="menu my-4">
@@ -9,4 +10,9 @@
     <section class="translation-container">
         <app-encoding-messages></app-encoding-messages>
     </section>
+   </main>
+    <footer class="d-flex text-light justify-content-center gap-5"> 
+        <p>{{"footer.author" | translate}}: Tomasz Mazurek</p>
+        <p>{{"footer.label" | translate}}</p>
+    </footer>
 </section>

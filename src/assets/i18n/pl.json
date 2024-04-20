@@ -3,7 +3,7 @@
     "changeLanguage": "change to english",
     "menuButtons":{
         "learning": "nauka",
-        "stepByStep": "krok po korku",
+        "stepByStep": "krok po kroku",
         "pdf":"pdf",
         "download":"pobierz"
     },
@@ -47,5 +47,9 @@
         "singleLabel":"Szukamy w znaków z wiadomości w tabeli (podświetli się na niebiesko)",
         "moreThanSingleLabel":"Szukamy w znaków z wiadomości w tabeli (znaki do zakodowania podświetlą się na niebiesko a zakodowana na zielono)",
         "afterCoding":"Wiadomość po zakodowaniu:"   
+    },
+    "footer":{
+        "author": "Autor aplikacji",
+        "label":"Aplikacja wykonana w ramach pracy magisterskiej Edukacyjny serwis webowy do kodowania informacji tekstowej i binarnej"
     }
 }

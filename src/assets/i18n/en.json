@@ -48,5 +48,9 @@
         "singleLabel":"Search for the characters from the message in the table (it will highlight in blue)",
         "moreThanSingleLabel":"We are looking for the characters from the message in the table (characters to be encoded will be highlighted in blue, and those encoded in green)",
         "afterCoding":"Message after encoding:"
+    },
+    "footer":{
+        "author": "Application author",
+        "label":"Application made as part of my master's thesis Educational web service for text and binary information encoding"
     }
 }

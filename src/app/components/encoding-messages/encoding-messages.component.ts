@@ -4,6 +4,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { TypeOfCoding, dropdownCodeList } from "src/app/constants";
 import { CodingService, DownloadFilesService } from "src/app/services";
 import { Combination, DropdownCodeListType } from "src/app/types";
+import { encodeMessageValidator } from "src/app/validators/encode-message-validator";
 
 @Component({
   selector: "app-encoding-messages",
@@ -35,6 +36,7 @@ export class EncodingMessagesComponent implements OnInit {
         codedMessage: [{ value: "", disabled: true }],
       }
     );
+    this.valueChanges();
   }
 
   public onSubmit(): void {
@@ -68,6 +70,7 @@ export class EncodingMessagesComponent implements OnInit {
 
   public changeCodedList(list: DropdownCodeListType): void {
     if (this.form.value.selectedEncode !== "") {
+      
       this.form.get("selectedCoded")?.enable();
       this.dropdownEncodeList = list?.encodeList;
     }
@@ -77,8 +80,7 @@ export class EncodingMessagesComponent implements OnInit {
     const selectedEncode = this.form.get("selectedEncode")?.value;
     const encodeMessage = this.form.get("encodeMessage")?.value;
     const selectedCoded = this.form.get("selectedCoded")?.value;
-
-    if (!selectedEncode || !encodeMessage || !selectedCoded) {
+    if (!selectedEncode || !encodeMessage || !selectedCoded || !this.form.valid) {
       return true;
     }
     return false;
@@ -109,6 +111,25 @@ export class EncodingMessagesComponent implements OnInit {
     this.form.controls["selectedCoded"].setValue(
       this.dropdownEncodeList?.find((item) => item.code == selectedEncode.code)
     );
+  }
+
+  private valueChanges(): void {
+    this.form.get("selectedEncode")?.valueChanges.subscribe(value => {
+      const selectedEncodeControl = this.form.get("encodeMessage");
+      console.log(this.form);
+      if (value.code === TypeOfCoding.binary || value.code === TypeOfCoding.gray) {
+        selectedEncodeControl?.setValidators(encodeMessageValidator(TypeOfCoding.binary));
+      } else if (value.code === TypeOfCoding.number || value.code === TypeOfCoding.ascii || value.code === TypeOfCoding.iso8859 || value.code === TypeOfCoding.utf8) {
+        selectedEncodeControl?.setValidators(encodeMessageValidator(TypeOfCoding.number));
+      } else if (value.code === TypeOfCoding.text) {
+        selectedEncodeControl?.setValidators(encodeMessageValidator(TypeOfCoding.text));
+      } else if (value.code === TypeOfCoding.bcd) {
+        selectedEncodeControl?.setValidators(encodeMessageValidator(TypeOfCoding.bcd));
+      } else if (value.code === TypeOfCoding.sevenSegment) {
+        selectedEncodeControl?.setValidators(encodeMessageValidator(TypeOfCoding.sevenSegment));
+      }  
+      selectedEncodeControl?.updateValueAndValidity();
+    });
   }
 
   private setLearningTranslation(combination: Combination):void {
