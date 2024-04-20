@@ -59,6 +59,7 @@ export class EncodingMessagesComponent implements OnInit {
   }
 
   public switchMessages(): void {
+    this.disableMenuButtons();
     this.searchCodeList();
     this.form.controls["encodeMessage"].setValue(
       this.form.controls["codedMessage"].value
@@ -72,7 +73,8 @@ export class EncodingMessagesComponent implements OnInit {
 
   public changeCodedList(list: DropdownCodeListType): void {
     if (this.form.value.selectedEncode !== "") {
-      
+      this.disableMenuButtons();
+      this.form.get("codedMessage")?.disable();
       this.form.get("selectedCoded")?.enable();
       this.dropdownEncodeList = list?.encodeList;
     }
@@ -113,6 +115,12 @@ export class EncodingMessagesComponent implements OnInit {
     this.form.controls["selectedCoded"].setValue(
       this.dropdownEncodeList?.find((item) => item.code == selectedEncode.code)
     );
+  }
+
+  private disableMenuButtons(): void{
+    this.codingService.disablePDF = true;
+    this.codingService.disableStepByStep = true;
+    this.codingService.disableLearning = true;
   }
 
   private valueChanges(): void {
