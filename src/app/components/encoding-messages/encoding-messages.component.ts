@@ -128,7 +128,10 @@ export class EncodingMessagesComponent implements OnInit {
       const selectedEncodeControl = this.form.get("encodeMessage");
       if (value.code === TypeOfCoding.binary || value.code === TypeOfCoding.gray) {
         selectedEncodeControl?.setValidators(encodeMessageValidator(TypeOfCoding.binary));
-      } else if (value.code === TypeOfCoding.number || value.code === TypeOfCoding.ascii || value.code === TypeOfCoding.iso8859 || value.code === TypeOfCoding.utf8) {
+      } else if (value.code === TypeOfCoding.number && this.form.get("selectedCoded")?.value == TypeOfCoding.sevenSegment) {
+        selectedEncodeControl?.setValidators(encodeMessageValidator(TypeOfCoding.number, TypeOfCoding.sevenSegment));
+      } 
+       else if ((value.code === TypeOfCoding.number && this.form.get("selectedCoded")?.value != TypeOfCoding.sevenSegment) || value.code === TypeOfCoding.ascii || value.code === TypeOfCoding.iso8859 || value.code === TypeOfCoding.utf8) {
         selectedEncodeControl?.setValidators(encodeMessageValidator(TypeOfCoding.number));
       } else if (value.code === TypeOfCoding.text) {
         selectedEncodeControl?.setValidators(encodeMessageValidator(TypeOfCoding.text));
@@ -136,7 +139,7 @@ export class EncodingMessagesComponent implements OnInit {
         selectedEncodeControl?.setValidators(encodeMessageValidator(TypeOfCoding.bcd));
       } else if (value.code === TypeOfCoding.sevenSegment) {
         selectedEncodeControl?.setValidators(encodeMessageValidator(TypeOfCoding.sevenSegment));
-      }  
+      } 
       selectedEncodeControl?.updateValueAndValidity();
     });
   }
