@@ -5,7 +5,7 @@ export function encodeMessageValidator(type: string, codedValue?:string): Valida
   return (control: AbstractControl): { [key: string]: any } | null => {
     let pattern;
     if (type === TypeOfCoding.binary || type == TypeOfCoding.gray) {
-      pattern = /^[01]+$/;
+      pattern = /^[0-1]{1,}$/;
     } else if (type === TypeOfCoding.number && codedValue == TypeOfCoding.sevenSegment) {
       pattern = /^\d$/;
     } else if ((type === TypeOfCoding.number && codedValue != TypeOfCoding.sevenSegment) ||  type === TypeOfCoding.ascii || type === TypeOfCoding.iso8859 || type === TypeOfCoding.utf8) {
@@ -13,10 +13,10 @@ export function encodeMessageValidator(type: string, codedValue?:string): Valida
     } else if (type === TypeOfCoding.text) {
       pattern = /^[\s\S]*$/;
     }  else if (type === TypeOfCoding.sevenSegment) {
-      pattern = /^(?:[01]{7})+$/;
+      pattern = /^[0-1]{7}$/;
     } 
     else if (type === TypeOfCoding.bcd) {
-      pattern = /^(?:[01]{4})+$/;
+      pattern = /^[0-1]{4}$/;
     } 
     else {
       throw new Error('Unsupported validation type');
