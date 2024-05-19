@@ -33,7 +33,7 @@ export class MenuComponent {
         break;
     }
   }
-  public openDialog(component: Type<any>, header: string, data?: {}): void {
+  private openDialog(component: Type<any>, header: string, data?: {}): void {
     this.dialogService.open(component, {
       header: header,
       width: '40vw',
