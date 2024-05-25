@@ -80,7 +80,7 @@ export class EncodingMessagesComponent implements OnInit {
     }
   }
 
-  public validationBeforeSubmit(): boolean {
+  public checkIsFormEmpty(): boolean {
     const selectedEncode = this.form.get("selectedEncode")?.value;
     const encodeMessage = this.form.get("encodeMessage")?.value;
     const selectedCoded = this.form.get("selectedCoded")?.value;
@@ -117,7 +117,7 @@ export class EncodingMessagesComponent implements OnInit {
     );
   }
 
-  private disableMenuButtons(): void{
+  private disableMenuButtons(): void {
     this.codingService.disablePDF = true;
     this.codingService.disableStepByStep = true;
     this.codingService.disableLearning = true;

@@ -7,9 +7,9 @@ import { CodingService } from 'src/app/services';
 import { Combination } from 'src/app/types';
 
 @Component({
-  selector: 'app-learing',
-  templateUrl: './learing.component.html',
-  styleUrl: './learing.component.scss',
+  selector: 'app-learning',
+  templateUrl: './learning.component.html',
+  styleUrl: './learning.component.scss',
 })
 export class LearingComponent implements OnInit{
   public combiantion: Combination;

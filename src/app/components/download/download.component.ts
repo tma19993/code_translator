@@ -5,8 +5,7 @@ import { DownloadFilesService } from 'src/app/services';
 
 @Component({
   selector: 'app-download',
-  templateUrl: './download.component.html',
-  styleUrls: ['./download.component.scss'],
+  templateUrl: './download.component.html'
 })
 export class DownloadComponent {
   public selectedValues: string[] = [];

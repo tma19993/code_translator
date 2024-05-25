@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LearingComponent } from './learing.component';
+import { LearingComponent } from './learning.component';
 
-describe('LearingComponent', () => {
+describe('LearningComponent', () => {
   let component: LearingComponent;
   let fixture: ComponentFixture<LearingComponent>;
 
