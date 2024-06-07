@@ -38,7 +38,7 @@ export class BinaryStepByStepComponent implements OnInit {
   public convertToBinary(theString: string): string {
     return Number(theString).toString(2);
   }
-  public convertToDecimal(theString: string,sevenSegment?: boolean,index? :number): string {
+  public convertToDecimal(theString: string): string {
     return parseInt(theString, 2).toString();
   }
   public convertToNumber(theString: string): number {

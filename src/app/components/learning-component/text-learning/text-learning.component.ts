@@ -21,10 +21,6 @@ export class TextLearningComponent implements OnInit {
     this.tableInit();
   }
 
-  public fromCharCode(code: number): string {
-    return String.fromCharCode(code);
-  }
-
   private tableInit(): void {
     if (
       this.combiantion.fromEncoding == TypeOfCoding.ascii ||

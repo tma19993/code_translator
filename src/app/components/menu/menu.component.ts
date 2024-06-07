@@ -26,10 +26,10 @@ export class MenuComponent {
 
         break;
       case 'stepByStep':
-        this.openDialog(StepByStepComponent, this.translate.instant('menuButtons.learning'));
+        this.openDialog(StepByStepComponent, this.translate.instant('menuButtons.stepByStep'));
         break;
       case 'pdf':
-        this.openDialog(DownloadComponent, this.translate.instant('menuButtons.learning'));
+        this.openDialog(DownloadComponent, this.translate.instant('menuButtons.pdf'));
         break;
     }
   }
