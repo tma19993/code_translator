@@ -18,9 +18,9 @@ The application was built using the following technologies:
 To run the application, follow the steps below:
 
 1.  Clone the repository:
-    `git clone [REPOSITORY_URL]` 
+    `git clone https://github.com/tma19993/code_translator.git` 
 2.  Navigate to the project directory:
-    `cd [DIRECTORY_NAME]` 
+    `cd code_translator` 
 3.  Install dependencies:
     `npm install` 
 4.  Start the application:
